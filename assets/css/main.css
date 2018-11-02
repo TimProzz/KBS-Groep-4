@@ -1,0 +1,42 @@
+.tableHistory {
+    width: 100%;
+    font-weight: normal !important;
+    background: grey;
+}
+
+.tableHistory tr:nth-child(even) {
+    background: rgb(255, 255, 255);
+}
+
+.tableHistory tr:nth-child(odd) {
+    background: rgb(230, 230, 230);
+}
+
+.tableHistory th {
+    height: 40px;
+    padding: 5px 0;
+}
+
+.tableHistory img {
+    max-width: 400px;
+    max-height: 300px;
+}
+
+.tableHistory {
+    display: none;
+}
+
+.tableHistory1 {
+    display: table;
+}
+
+.linkReactPage {
+    text-decoration: none;
+    font-weight: normal;
+    padding-left: 8px;
+}
+
+.pageSelect {
+    text-align: center;
+    font-size: 24px;
+}
