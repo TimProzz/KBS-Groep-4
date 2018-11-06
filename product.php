@@ -34,6 +34,9 @@ $row = $stmt->fetch();
             <h5 class="card-title">
                 <?php echo $row["StockItemName"]; ?>
             </h5>
+            <h6 class="card-subtitle mb-2 text-muted">
+                &euro;<?php echo $row["UnitPrice"]; ?>
+            </h6>
             <p class="card-text">
                 <?php while ($cat = $stmt->fetch()) { ?>
                     <a href="categorie.php?id=<?php echo $cat["StockGroupID"]; ?>">
