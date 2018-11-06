@@ -18,7 +18,7 @@ include("template.php");
         ?>
 
         <?php
-        $stockItems = $pdo->query("SELECT S.StockItemName FROM stockitems S
+        $stockItems = $pdo->query("SELECT * FROM StockItems S
         JOIN stockitemstockgroups SG ON S.StockItemID = SG.StockItemID
         JOIN stockgroups G ON SG.StockGroupID = G.StockGroupID
         GROUP BY S.StockItemID");
@@ -61,7 +61,7 @@ include("template.php");
                     ?>
                     <tr>
                         <th><b><?php echo $countRows; ?></b><?php echo ". "; ?></th>
-                        <th><a href="/product.php?id=<?php echo $singleStockItem["StockItemID"]; ?>"><?php echo $singleStockItem["StockItemName"]; ?></a></th>
+                        <th><a href="product.php?id=<?php echo $singleStockItem["StockItemID"]; ?>"><?php echo $singleStockItem["StockItemName"]; ?></a></th>
                         <th><input type="number" name="hoeveel" min="0" placeholder="0" value="0" class="numberWinkelmand numberWinkelmand<?php echo $singleStockItem["StockItemID"]; ?>"></th>
                         <th><input type="submit" name="submitWinkelmand" class="submitWinkelmand" data-id="<?php echo $singleStockItem["StockItemID"]; ?>"></th>
                     </tr>
