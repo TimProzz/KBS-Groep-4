@@ -22,18 +22,10 @@ include("template.php");
 ?>
 
 <?php
-$stockItems = $pdo->query("SELECT S.StockItemName, GROUP_CONCAT(G.StockGroupID) FROM stockitems S
+$stockItems = $pdo->query("SELECT S.StockItemName FROM stockitems S
         JOIN stockitemstockgroups SG ON S.StockItemID = SG.StockItemID
         JOIN stockgroups G ON SG.StockGroupID = G.StockGroupID
         GROUP BY S.StockItemID");
-//$stockItems = $pdo->query("SELECT
-//        S.StockItemName,
-//        STUFF((SELECT '; ' + SG.StockGroupID
-//        FROM stockitemstockgroups SG
-//        WHERE SG.StockItemID = S.StockItemID
-//        FOR XML PATH('')), 1, 1, '') [Categorie]
-//        FROM StockItems S
-//        GROUP BY S.StockItemID");
 ?>
 
 <?php
@@ -73,7 +65,7 @@ $postRowDiv = 1;
             <tr>
                 <th><b><?php echo $countRows; ?></b><?php echo ". "; ?></th>
                 <th><?php echo $singleStockItem["StockItemName"]; ?> </th>
-                <th><?php echo $singleStockItem["StockGroupID"]; ?></th>
+                <th></th>
                 <th></th>
             </tr>
             <?php
