@@ -59,35 +59,37 @@ $(document).ready(function() {
         var id = parseInt($(this).attr("data-id"));
         var numberToAdd = parseInt($(".numberWinkelmand" + id).val());
         
-        var theJson = loadCart();
-        if(!theJson) {
-            var obj = getDefaultObject();
-        } else {
-            var obj = jQuery.parseJSON(theJson);
-        }
-        //var newID = Object.keys(obj).length;
-        //console.log(obj);
-        
-        var count = 0;
-        var check = 0;
-        
-        $(obj["listW"]).each(function() {
-            if(obj["listW"][count]["productid"] == id) {
-                obj["listW"][count]["hoeveel"] += numberToAdd
-                check = 1;
+        if(numberToAdd > 0) {
+            var theJson = loadCart();
+            if(!theJson) {
+                var obj = getDefaultObject();
             } else {
-                check = 0;
+                var obj = jQuery.parseJSON(theJson);
             }
-            count++;
-        });
-        
-        if(check != 1) {
-            obj["listW"].push({"productid":id,"hoeveel":numberToAdd,"active":true});
+            //var newID = Object.keys(obj).length;
+            //console.log(obj);
+
+            var count = 0;
+            var check = 0;
+
+            $(obj["listW"]).each(function() {
+                if(obj["listW"][count]["productid"] == id) {
+                    obj["listW"][count]["hoeveel"] = numberToAdd;
+                    check = 1;
+                } else {
+                    check = 0;
+                }
+                count++;
+            });
+
+            if(check != 1) {
+                obj["listW"].push({"productid":id,"hoeveel":numberToAdd,"active":true});
+            }
+
+            var newObj = JSON.stringify(obj);
+            $.cookie("winkelmand", newObj);
+            check = 0;
+            count = 0;
         }
-        
-        var newObj = JSON.stringify(obj);
-        $.cookie("winkelmand", newObj);
-        check = 0;
-        count = 0;
     });
 });
