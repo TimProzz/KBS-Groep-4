@@ -61,9 +61,9 @@ $row = $stmt->fetch();
             $stockCount = $stockItems->rowCount();
             ?>
             <tr>
-                <th><b><?php echo $singleStockItem["StockItemID"]; ?></th>
+                <th><strong><?php echo $singleStockItem["StockItemID"]; ?></strong></th>
                 <th><a href="product.php?id=<?php echo $singleStockItem["StockItemID"]; ?>"><?php echo $singleStockItem["StockItemName"]; ?></a></th>
-                <th><input type="number" name="hoeveel" min="0" placeholder="0" value="0" class="numberWinkelmand numberWinkelmand<?php echo $singleStockItem["StockItemID"]; ?>"></th>
+                <th><input type="number" name="hoeveel" min="0" placeholder="<?php echo getCartTotal($singleStockItem["StockItemID"]); ?>" value="<?php echo getCartTotal($singleStockItem["StockItemID"]); ?>" class="numberWinkelmand numberWinkelmand<?php echo $singleStockItem["StockItemID"]; ?>"></th>
                 <th><input type="submit" name="submitWinkelmand" class="submitWinkelmand" data-id="<?php echo $singleStockItem["StockItemID"]; ?>"></th>
             </tr>
             <?php

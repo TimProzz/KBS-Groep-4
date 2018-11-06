@@ -46,7 +46,7 @@ $row = $stmt->fetch();
                 <?php } ?>
             </p>
             <input type="number" name="hoeveel" min="0" placeholder="<?php echo getCartTotal($row["StockItemID"]); ?>" value="<?php echo getCartTotal($row["StockItemID"]); ?>" class="numberWinkelmand numberWinkelmand<?php echo $row["StockItemID"]; ?>">
-            <a href="#" class="btn btn-primary submitWinkelmand" data-id="<?php echo $row["StockItemID"]; ?>">In Winkelwagen</a>
+            <a href="#" class="btn btn-primary submitWinkelmand" data-id="<?php echo $row["StockItemID"]; ?>">In Winkelmand</a>
         </div>
     </div>
 </div>
