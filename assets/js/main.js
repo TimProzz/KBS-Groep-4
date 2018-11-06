@@ -71,6 +71,7 @@ $(document).ready(function() {
     $(".submitWinkelmand").on("click", function() {
         var id = parseInt($(this).attr("data-id"));
         var numberToAdd = parseInt($(".numberWinkelmand" + id).val());
+        //console.log(id);
         
         var theJson = loadCart();
         if(!theJson) {
@@ -78,20 +79,19 @@ $(document).ready(function() {
         } else {
             var obj = jQuery.parseJSON(theJson);
         }
-        
         var count = 0;
         var check = 0;
+        
+        //console.log(obj);
         
         if(numberToAdd > 0) {
             //var newID = Object.keys(obj).length;
             //console.log(obj);
 
             $(obj["listW"]).each(function() {
-                if(obj["listW"][count]["productid"] == id) {
+                if(obj["listW"][count]["productid"] == id && check == 0) {
                     obj["listW"][count]["hoeveel"] = numberToAdd;
                     check = 1;
-                } else {
-                    check = 0;
                 }
                 count++;
             });
@@ -104,9 +104,13 @@ $(document).ready(function() {
             check = 0;
             count = 0;
         } else {
+            //console.log(obj);
+            
             $(obj["listW"]).each(function() {
-                if(obj["listW"][count]["productid"] == id) {
+                if(obj["listW"][count]["productid"] == id && check == 0) {
                     obj["listW"].splice(count, 1);
+                    check = 1;
+                    return;
                 }
                 count++;
             });
@@ -115,6 +119,8 @@ $(document).ready(function() {
             $.cookie("winkelmand", newObj);
             check = 0;
             count = 0;
+            //console.log(obj);
+            
         }
         var newTotaalItems = countCartTotalItems();
         $(".winkelmandCount").html(newTotaalItems);
