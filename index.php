@@ -22,9 +22,18 @@ include("template.php");
 ?>
 
 <?php
-$stockItems = $pdo->query("SELECT * FROM stockitems S
+$stockItems = $pdo->query("SELECT S.StockItemName, GROUP_CONCAT(G.StockGroupID)as Categorie FROM stockitems S
         JOIN stockitemstockgroups SG ON S.StockItemID = SG.StockItemID
-        JOIN stockgroups G ON SG.StockGroupID = G.StockGroupID");
+        JOIN stockgroups G ON SG.StockGroupID = G.StockGroupID
+        GROUP BY S.StockItemID");
+//$stockItems = $pdo->query("SELECT
+//        S.StockItemName,
+//        STUFF((SELECT '; ' + SG.StockGroupID
+//        FROM stockitemstockgroups SG
+//        WHERE SG.StockItemID = S.StockItemID
+//        FOR XML PATH('')), 1, 1, '') [Categorie]
+//        FROM StockItems S
+//        GROUP BY S.StockItemID");
 ?>
 
 <?php
@@ -36,7 +45,7 @@ $postRowDiv = 1;
         <tr>
             <th><b>Nummer:</b></th>
             <th><b>Naam:</b></th>
-            <th><b>Niks:</b></th>
+            <th><b>Categorie:</b></th>
             <th><b>Niks:</b></th>
         </tr>
         <?php
@@ -54,7 +63,7 @@ $postRowDiv = 1;
                 <tr>
                     <th><b>Nummer:</b></th>
                     <th><b>Naam:</b></th>
-                    <th><b>Niks:</b></th>
+                    <th><b>Categorie:</b></th>
                     <th><b>Niks:</b></th>
                 </tr>
                 <?php
