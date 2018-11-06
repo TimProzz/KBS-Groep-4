@@ -42,8 +42,8 @@ $(document).ready(function() {
     
     var getDefaultObject = function() {
         return {
-            list: [],
-            id: 0
+            listW: []
+
         };
     }
     
@@ -66,9 +66,28 @@ $(document).ready(function() {
             var obj = jQuery.parseJSON(theJson);
         }
         //var newID = Object.keys(obj).length;
-        console.log(obj);
-        obj["list"].push({"productid":id,"hoeveel":numberToAdd,"active":true});
+        //console.log(obj);
+        
+        var count = 0;
+        var check = 0;
+        
+        $(obj["listW"]).each(function() {
+            if(obj["listW"][count]["productid"] == id) {
+                obj["listW"][count]["hoeveel"] += numberToAdd
+                check = 1;
+            } else {
+                check = 0;
+            }
+            count++;
+        });
+        
+        if(check != 1) {
+            obj["listW"].push({"productid":id,"hoeveel":numberToAdd,"active":true});
+        }
+        
         var newObj = JSON.stringify(obj);
         $.cookie("winkelmand", newObj);
+        check = 0;
+        count = 0;
     });
 });
