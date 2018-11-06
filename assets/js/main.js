@@ -1,6 +1,8 @@
 $(document).ready(function() {
     
-   var pageCount = 0;
+    //$.cookie("winkelmand", '{"list":[{"productid":1,"hoeveel":2,"active":true},{"productid":2,"hoeveel":5,"active":true}],"id":2}');
+    
+    var pageCount = 0;
 
     $( ".tableHistory" ).each(function() {
         pageCount++;
@@ -38,4 +40,35 @@ $(document).ready(function() {
         });
     });
     
+    var getDefaultObject = function() {
+        return {
+            list: [],
+            id: 0
+        };
+    }
+    
+    var loadCart = function() {
+        var AlsJsonString = $.cookie("winkelmand");
+        if(AlsJsonString == undefined) {
+            return false;
+        }
+        return AlsJsonString;
+    }
+    
+    $(".submitWinkelmand").on("click", function() {
+        var id = parseInt($(this).attr("data-id"));
+        var numberToAdd = parseInt($(".numberWinkelmand" + id).val());
+        
+        var theJson = loadCart();
+        if(!theJson) {
+            var obj = getDefaultObject();
+        } else {
+            var obj = jQuery.parseJSON(theJson);
+        }
+        //var newID = Object.keys(obj).length;
+        console.log(obj);
+        obj["list"].push({"productid":id,"hoeveel":numberToAdd,"active":true});
+        var newObj = JSON.stringify(obj);
+        $.cookie("winkelmand", newObj);
+    });
 });
