@@ -22,7 +22,7 @@ include("template.php");
 ?>
 
 <?php
-$stockItems = $pdo->query("SELECT * FROM stockitems S
+$stockItems = $pdo->query("SELECT S.StockItemName, GROUP_CONCAT(G.StockGroupID) FROM stockitems S
         JOIN stockitemstockgroups SG ON S.StockItemID = SG.StockItemID
         JOIN stockgroups G ON SG.StockGroupID = G.StockGroupID");
 ?>
@@ -64,7 +64,7 @@ $postRowDiv = 1;
             <tr>
                 <th><b><?php echo $countRows; ?></b><?php echo ". "; ?></th>
                 <th><?php echo $singleStockItem["StockItemName"]; ?> </th>
-                <th><?php echo $singleStockItem["StockGroupName"]; ?></th>
+                <th><?php echo $singleStockItem["StockGroupID"]; ?></th>
                 <th></th>
             </tr>
             <?php
