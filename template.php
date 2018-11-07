@@ -8,7 +8,7 @@ include('functions.php');
     <head>
         <title>Badeend&co</title>
         <link rel="icon" href="assets/images/SM-Rubber-Duck-front-Amsterdam-Duck-Store.jpg">
-        
+
         <link rel="stylesheet" href="assets/css/main.css" />
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
@@ -47,7 +47,9 @@ include('functions.php');
                         <?php
                     }
                     ?>
-                    <li class="nav-item">
+                    <li class="nav-item" style="    right: 0px;
+                        position: absolute;
+                        margin-right: 20px;">
                         <a class="nav-link" href="winkelmand.php">
                             <i class="fa fa-shopping-cart" aria-hidden="true"></i>Winkelmand (<span class="winkelmandCount"><?php echo countCartTotal(); ?></span>)
                         </a>
