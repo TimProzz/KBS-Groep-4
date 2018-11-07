@@ -22,7 +22,7 @@ $row = $stmt->fetch();
 ?>
 
 <nav aria-label="breadcrumb">
-    <ol class="breadcrumb" style="background-color: white;">
+    <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="index.php">Home</a></li>
         <li class="breadcrumb-item active" aria-current="page">
             <?php echo $row["StockGroupName"]; ?>
@@ -30,8 +30,8 @@ $row = $stmt->fetch();
     </ol>
 </nav>
 
-<div style="overflow-x: auto;">
-    <table class="tableHistory tableHistory1">
+<div class="container">
+    <table class="table table-bordered tableHistory tableHistory1">
         <tr>
             <th><b>Nummer:</b></th>
             <th><b>Naam:</b></th>
@@ -49,7 +49,7 @@ $row = $stmt->fetch();
                 $postRowDiv++;
                 ?>
             </table>
-            <table class="tableHistory tableHistory<?php echo $postRowDiv; ?>">
+            <table class="table table-bordered tableHistory tableHistory<?php echo $postRowDiv; ?>">
                 <tr>
                     <th><b>Nummer:</b></th>
                     <th><b>Naam:</b></th>
@@ -71,7 +71,7 @@ $row = $stmt->fetch();
         ?>
     </table>
 
-
+</div>
 
 
 

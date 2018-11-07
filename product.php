@@ -13,7 +13,7 @@ $stmt->execute();
 $row = $stmt->fetch();
 ?>
 <nav aria-label="breadcrumb">
-    <ol class="breadcrumb" style="background-color: white;">
+    <ol class="breadcrumb" >
         <li class="breadcrumb-item"><a href="index.php">Home</a></li>
         <li class="breadcrumb-item">
             <a href="categorie.php?id=<?php echo $row["StockGroupID"]; ?>">
@@ -26,11 +26,13 @@ $row = $stmt->fetch();
     </ol>
 </nav>
 
-<div style="text-align: center; padding-top: 50px;">
+<div class="container product">
 
-    <div class="card" style="width: 18rem; display: inline-block">
-        <img class="card-img-top" src="assets/images/SM-Rubber-Duck-front-Amsterdam-Duck-Store.jpg" alt="Card image cap">
-        <div class="card-body">
+    <div class="row">
+        <div class="col-lg-6">
+            <img class="img-fluid" src="https://via.placeholder.com/500">
+        </div>
+        <div class="col-lg-6 productInfo">
             <h5 class="card-title">
                 <?php echo $row["StockItemName"]; ?>
             </h5>

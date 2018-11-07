@@ -20,8 +20,8 @@ $stockItems = $pdo->query("SELECT * FROM StockItems S
 $postNumber = 0;
 $postRowDiv = 1;
 ?>
-<div style="overflow-x: auto;">
-    <table class="tableHistory tableHistory1">
+<div class="container">
+    <table class="table table-bordered tableHistory tableHistory1">
         <tr>
             <th><b>Nummer:</b></th>
             <th><b>Naam:</b></th>
@@ -39,7 +39,7 @@ $postRowDiv = 1;
                 $postRowDiv++;
                 ?>
             </table>
-            <table class="tableHistory tableHistory<?php echo $postRowDiv; ?>">
+            <table class="table table-bordered tableHistory tableHistory<?php echo $postRowDiv; ?>">
                 <tr>
                     <th><b>Nummer:</b></th>
                     <th><b>Naam:</b></th>
@@ -60,16 +60,17 @@ $postRowDiv = 1;
         }
         ?>
     </table>
+    <div class="pageSelect">
+        <?php
+        echo "Pagina: ";
+        for ($i = 1; $i <= $postRowDiv; $i++) {
+            ?><a class="linkReactPage reactionPageNumber<?php echo $i; ?>" id="tableHistory<?php echo $i; ?>"><?php echo $i; ?></a><?php
+        }
+        ?>
+    </div>
+    <br>
 </div><br>
-<div class="pageSelect">
-    <?php
-    echo "Pagina: ";
-    for ($i = 1; $i <= $postRowDiv; $i++) {
-        ?><a class="linkReactPage reactionPageNumber<?php echo $i; ?>" id="tableHistory<?php echo $i; ?>"><?php echo $i; ?></a><?php
-    }
-    ?>
-</div>
-<br>
+
 
 </body>
 </html>
