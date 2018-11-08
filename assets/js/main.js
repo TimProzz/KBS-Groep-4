@@ -100,7 +100,7 @@ $(document).ready(function() {
                 obj["listW"].push({"productid":id,"hoeveel":numberToAdd,"active":true});
             }
             var newObj = JSON.stringify(obj);
-            $.cookie("winkelmand", newObj);
+            $.cookie("winkelmand", newObj, { expires: 10000 });
             check = 0;
             count = 0;
         } else {
@@ -116,7 +116,7 @@ $(document).ready(function() {
             });
             
             var newObj = JSON.stringify(obj);
-            $.cookie("winkelmand", newObj);
+            $.cookie("winkelmand", newObj, { expires: 10000 });
             check = 0;
             count = 0;
             //console.log(obj);
