@@ -7,11 +7,11 @@ $(document).ready(function() {
     $( ".tableHistory" ).each(function() {
         pageCount++;
         var classname = this.className;
-        var singleClassname = classname.replace('tableHistory ','');
+        var singleClassname = classname.replace('table table-bordered tableHistory ','');
         var idClassname = "#" + singleClassname;
         
         $(idClassname).click(function() {
-            //console.log("test");
+            console.log("test");
             var number = this.id;
             // number is name of div to show
             for(var i = 1; i <= pageCount; i++) {
@@ -100,7 +100,7 @@ $(document).ready(function() {
                 obj["listW"].push({"productid":id,"hoeveel":numberToAdd,"active":true});
             }
             var newObj = JSON.stringify(obj);
-            $.cookie("winkelmand", newObj);
+            $.cookie("winkelmand", newObj, { expires: 10000 });
             check = 0;
             count = 0;
         } else {
@@ -116,7 +116,7 @@ $(document).ready(function() {
             });
             
             var newObj = JSON.stringify(obj);
-            $.cookie("winkelmand", newObj);
+            $.cookie("winkelmand", newObj, { expires: 10000 });
             check = 0;
             count = 0;
             //console.log(obj);

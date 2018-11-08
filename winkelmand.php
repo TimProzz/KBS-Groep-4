@@ -4,7 +4,7 @@ include("template.php");
 
 <div class="container product">
     <h1>
-        Winkelwagen
+        Winkelmand
     </h1>
     <table class="table table-bordered">
         <thead>
@@ -44,7 +44,7 @@ include("template.php");
                 <tr>
                 <td><strong>Totaal:</strong></td>
                 <td colspan='2'><span class='winkelmandCount'>" . countCartTotal() . "</span></td>";
-            echo "<td colspan='1'>" . number_format($totaalPrijs, 2) . "</td>
+            echo "<td colspan='1'>&euro;" . number_format($totaalPrijs, 2) . "</td>
                 </tr>
               </tfoot>";
             ?>
