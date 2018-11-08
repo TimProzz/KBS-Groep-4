@@ -12,22 +12,21 @@ $stmt = $pdo->prepare("SELECT * FROM StockItems S
 $stmt->execute();
 $row = $stmt->fetch();
 ?>
-<nav aria-label="breadcrumb">
-    <ol class="breadcrumb" >
-        <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-        <li class="breadcrumb-item">
-            <a href="categorie.php?id=<?php echo $row["StockGroupID"]; ?>">
-                <?php echo $row["StockGroupName"]; ?>
-            </a>
-        </li>
-        <li class="breadcrumb-item active" aria-current="page">
-            <?php echo $row["StockItemName"]; ?>
-        </li>
-    </ol>
-</nav>
 
 <div class="container product">
-
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb" >
+            <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+            <li class="breadcrumb-item">
+                <a href="categorie.php?id=<?php echo $row["StockGroupID"]; ?>">
+                    <?php echo $row["StockGroupName"]; ?>
+                </a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">
+                <?php echo $row["StockItemName"]; ?>
+            </li>
+        </ol>
+    </nav>
     <div class="row">
         <div class="col-lg-6">
             <img class="img-fluid" src="https://via.placeholder.com/500">
