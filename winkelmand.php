@@ -4,7 +4,7 @@ include("template.php");
 
 <div class="container product">
     <h1>
-        Winkelwagen
+        Winkelmand
     </h1>
     <table class="table table-bordered">
         <thead>
