@@ -51,7 +51,7 @@ include('functions.php');
                         position: absolute;
                         margin-right: 20px;">
                         <a class="nav-link" href="winkelmand.php">
-                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>Winkelmand (<span class="winkelmandCount"><?php echo countCartTotal(); ?></span>)
+                            <i class="fa fa-shopping-cart" aria-hidden="true"></i> Winkelmand (<span class="winkelmandCount"><?php echo countCartTotal(); ?></span>)
                         </a>
                     </li>
                 </ul>
