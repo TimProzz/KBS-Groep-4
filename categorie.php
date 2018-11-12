@@ -69,6 +69,15 @@ $row = $stmt->fetch();
         }
         ?>
     </table>
+    <div class="pageSelect">
+        <?php
+        echo "Pagina: ";
+        for ($i = 1; $i <= $postRowDiv; $i++) {
+            ?><a class="linkReactPage reactionPageNumber<?php echo $i; ?>" id="tableHistory<?php echo $i; ?>"><?php echo $i; ?></a><?php
+        }
+        ?>
+    </div>
+    <br>
 
 </div>
 
