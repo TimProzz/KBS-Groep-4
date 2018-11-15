@@ -54,7 +54,7 @@
         <?php
             if(isset($_COOKIE["login"])) {
                 ?>
-                    <div class="loggedIn"><?php echo "Logged in as " . $_COOKIE["login"] . " - <a href='/logout.php'>Logout</a>"; ?></div>
+                    <div class="loggedIn"><?php echo "Logged in as <a href='account.php'>" . $_COOKIE["login"] . "</a> - <a href='/logout.php'>Logout</a>"; ?></div>
                 <?php
             }
         ?>
