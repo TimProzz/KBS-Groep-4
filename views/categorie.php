@@ -1,18 +1,12 @@
-<?php
-include_once "package.inc.php";
-$views = "views/index.php";
-?>
-
-<?php
-$stockItems = $pdo->query("SELECT * FROM StockItems");
-?>
-
-
-<?php
-$postNumber = 0;
-$postRowDiv = 1;
-?>
-<div class="container product">
+<div class="container">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">
+                <?php echo $row["StockGroupName"]; ?>
+            </li>
+        </ol>
+    </nav>
     <table class="table table-bordered tableHistory tableHistory1">
         <tr>
             <th><b>Nummer:</b></th>
@@ -43,7 +37,7 @@ $postRowDiv = 1;
             $stockCount = $stockItems->rowCount();
             ?>
             <tr>
-                <th><b><?php echo $countRows; ?></b><?php echo ". "; ?></th>
+                <th><strong><?php echo $singleStockItem["StockItemID"]; ?></strong></th>
                 <th><a href="product.php?id=<?php echo $singleStockItem["StockItemID"]; ?>"><?php echo $singleStockItem["StockItemName"]; ?></a></th>
                 <th><input type="number" name="hoeveel" min="0" placeholder="<?php echo getCartTotal($singleStockItem["StockItemID"]); ?>" value="<?php echo getCartTotal($singleStockItem["StockItemID"]); ?>" class="numberWinkelmand numberWinkelmand<?php echo $singleStockItem["StockItemID"]; ?>"></th>
                 <th><input type="submit" name="submitWinkelmand" class="submitWinkelmand" data-id="<?php echo $singleStockItem["StockItemID"]; ?>"></th>
@@ -61,11 +55,5 @@ $postRowDiv = 1;
         ?>
     </div>
     <br>
-</div><br>
 
-
-</body>
-</html>
-<?php
-include $template;
-?>
+</div>

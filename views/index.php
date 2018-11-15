@@ -1,18 +1,8 @@
 <?php
-include_once "package.inc.php";
-$views = "views/index.php";
+    $postNumber = 0;
+    $postRowDiv = 1;
 ?>
-
-<?php
-$stockItems = $pdo->query("SELECT * FROM StockItems");
-?>
-
-
-<?php
-$postNumber = 0;
-$postRowDiv = 1;
-?>
-<div class="container product">
+<div class="container">
     <table class="table table-bordered tableHistory tableHistory1">
         <tr>
             <th><b>Nummer:</b></th>
@@ -62,10 +52,3 @@ $postRowDiv = 1;
     </div>
     <br>
 </div><br>
-
-
-</body>
-</html>
-<?php
-include $template;
-?>

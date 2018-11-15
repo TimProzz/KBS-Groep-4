@@ -1,9 +1,3 @@
-<?php
-session_start();
-include('connection.php');
-include('functions.php');
-?>
-
 <html>
     <head>
         <title>Badeend&co</title>
@@ -14,7 +8,6 @@ include('functions.php');
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
         <script type="text/javascript" src="assets/js/main.js"></script>
         <script type="text/javascript" src="assets/js/jquery.cookie.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     </head>
     <body>
@@ -28,18 +21,40 @@ include('functions.php');
                     <li class="nav-item active">
                         <a class="nav-link" href="index.php">Home<span class="sr-only">(current)</span></a>
                     </li>
+
+
+
+                    <?php
+                    $headerStockGroups = $pdo->prepare("SELECT * FROM StockGroups");
+
+                    // uitvoeren
+                    $headerStockGroups->execute();
+                    while ($headerRow = $headerStockGroups->fetch()) {
+                        ?>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="categorie.php?id=<?php echo $headerRow["StockGroupID"]; ?>">
+                                <?php echo $headerRow["StockGroupName"]; ?>
+                            </a>
+                        </li>
+
+                        <?php
+                    }
+                    ?>
+                    <li class="nav-item" style="right: 0px;
+                        position: absolute;
+                        margin-right: 20px;">
+                        <a class="nav-link" href="winkelmand.php">
+                            <i class="fa fa-shopping-cart" aria-hidden="true"></i> Winkelmand (<span class="winkelmandCount"><?php echo countCartTotal(); ?></span>)
+                        </a>
+                    </li>
                 </ul>
             </div>
-
-
-            <?php
-            include "templates/header-template.php";
-
-
-            include $views;
-
-            include "templates/footer-template.php";
-            ?>
-
-
-
+        </nav>
+        <?php
+            if(isset($_COOKIE["login"])) {
+                ?>
+                    <div class="loggedIn"><?php echo "Logged in as " . $_COOKIE["login"] . " - <a href='/logout.php'>Logout</a>"; ?></div>
+                <?php
+            }
+        ?>

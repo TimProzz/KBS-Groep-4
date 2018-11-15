@@ -74,3 +74,11 @@ body{
 .breadcrumb {
     background-color: transparent!important;
 }
+
+.loggedIn {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background: orange;
+    padding: 2px;
+}
