@@ -33,7 +33,6 @@ $(document).ready(function() {
                 setTimeout(function() {
                     divToChange.attr("src", nameOfFile);
                 }, randomNumber); 
-                //console.log(divToChange);
             });
 
             $(window).scrollTop($('.pageSelect').offset().top - ($(window).height() / 2));
@@ -68,10 +67,16 @@ $(document).ready(function() {
         return totaalItems;
     }
     
+    var submitDataToCookie = function(obj, check, count) {
+        var newObj = JSON.stringify(obj);
+        $.cookie("winkelmand", newObj, { expires: 10000 });
+        check = 0;
+        count = 0;
+    }
+    
     $(".submitWinkelmand").on("click", function() {
         var id = parseInt($(this).attr("data-id"));
         var numberToAdd = parseInt($(".numberWinkelmand" + id).val());
-        //console.log(id);
         
         var theJson = loadCart();
         if(!theJson) {
@@ -82,12 +87,7 @@ $(document).ready(function() {
         var count = 0;
         var check = 0;
         
-        //console.log(obj);
-        
         if(numberToAdd > 0) {
-            //var newID = Object.keys(obj).length;
-            //console.log(obj);
-
             $(obj["listW"]).each(function() {
                 if(obj["listW"][count]["productid"] == id && check == 0) {
                     obj["listW"][count]["hoeveel"] = numberToAdd;
@@ -99,13 +99,7 @@ $(document).ready(function() {
             if(check != 1) {
                 obj["listW"].push({"productid":id,"hoeveel":numberToAdd,"active":true});
             }
-            var newObj = JSON.stringify(obj);
-            $.cookie("winkelmand", newObj, { expires: 10000 });
-            check = 0;
-            count = 0;
         } else {
-            //console.log(obj);
-            
             $(obj["listW"]).each(function() {
                 if(obj["listW"][count]["productid"] == id && check == 0) {
                     obj["listW"].splice(count, 1);
@@ -114,14 +108,8 @@ $(document).ready(function() {
                 }
                 count++;
             });
-            
-            var newObj = JSON.stringify(obj);
-            $.cookie("winkelmand", newObj, { expires: 10000 });
-            check = 0;
-            count = 0;
-            //console.log(obj);
-            
         }
+        submitDataToCookie(obj, check, count);
         var newTotaalItems = countCartTotalItems();
         $(".winkelmandCount").html(newTotaalItems);
     });

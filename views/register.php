@@ -1,0 +1,20 @@
+<div class="container">
+    <h2>Register</h2>
+    <form action="/register.php" method="post">
+        <input type="text" name="username" placeholder="Username" value="<?php if(isset($username)) { echo $username; } ?>" required><br>
+        <input type="password" name="password" placeholder="Password" required><br>
+        <input type="password" name="passwordCheck" placeholder="Password again" required><br>
+        <input type="submit" value="Submit" name="register">
+    </form>
+    <?php 
+        if(count($errorMessages) >= 1) {
+            foreach($errorMessages as $value) {
+                echo $value . "<br />";
+            }
+        }
+    
+        if(isset($registerSuccessful)) {
+            echo $registerSuccessful;
+        }
+    ?>
+</div>
