@@ -66,7 +66,7 @@
             </div>
         </nav>
         <?php
-        if(isset($_COOKIE["login"])) {
+        if(userLoggedIn()) {
             ?>
             <div class="loggedIn"><?php echo "Logged in as <a href='account.php'>" . $_COOKIE["login"] . "</a> - <a href='logout.php'>Logout</a>"; ?></div>
             <?php

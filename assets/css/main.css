@@ -62,10 +62,12 @@ body{
 }
 
 .navbar-fixed {
+    background: #e9ecef!important;
     position: fixed!important;
     top: 0!important;
     width: 100%;
     height: 70px;
+    border-bottom: 1px solid grey;
     z-index: 999;
 }
 

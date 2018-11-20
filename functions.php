@@ -39,6 +39,12 @@
         setcookie("login", $username, time() + (86400 * 30), "/"); //Set username as login for 30 days
     }
 
+    function userLoggedIn() {
+        if(isset($_COOKIE["login"])) {
+            return true;
+        }
+    }
+
     function hashedPassword512($username, $password) { // Hashes the password with username and password
         return hash("sha512", $username.$password);
     }

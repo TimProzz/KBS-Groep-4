@@ -6,7 +6,7 @@ $views = "views/register.php";
 
 <?php
 
-if (isset($_COOKIE["login"])) {
+if (userLoggedIn()) {
     header("Location: index.php?error=You're already logged in!");
     exit;
 }
@@ -38,7 +38,7 @@ if (isset($_POST["register"])) {
 
     if (count($errorMessages) == 0) {
         $hashedPassword = hashedPassword512($username, $password);
-        $rechten = 2;
+        $rechten = 4;
 
         try {
             $query = $pdo->prepare("INSERT INTO users (username, password, rechten) VALUES (:username, :password, :rechten)");
