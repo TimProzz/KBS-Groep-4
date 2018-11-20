@@ -42,4 +42,19 @@
     function hashedPassword512($username, $password) { // Hashes the password with username and password
         return hash("sha512", $username.$password);
     }
+
+    function sortProducts() {
+        ?>
+            <div class="sortProducts">
+                <select class="sort">
+                    <option selected="true" disabled="disabled">Sorteren op:</option>
+                    <option value="Naam">Naam</option>
+                    <option value="Prijs1">Prijs (laag-hoog)</option>
+                    <option value="Prijs2">Prijs (hoog-laag)</option>
+                    <option value="Nieuwste">Nieuwste</option>
+                    <option value="Oudste">Oudste</option>
+                </select>
+            </div>
+        <?php
+    }
 ?>

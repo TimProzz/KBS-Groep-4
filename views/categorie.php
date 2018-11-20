@@ -7,6 +7,9 @@
             </li>
         </ol>
     </nav>
+    <?php
+        sortProducts();
+    ?>
     <table class="table table-bordered tableHistory tableHistory1">
         <tr>
             <th><b>Nummer:</b></th>
