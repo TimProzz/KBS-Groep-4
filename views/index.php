@@ -1,10 +1,14 @@
 <?php
-    $postNumber = 0;
-    $postRowDiv = 1;
+$postNumber = 0;
+$postRowDiv = 1;
 ?>
 <div class="container">
     <?php
-        sortProducts();
+    if (isset($_GET['search'])) {
+        echo "<h2>" . $_GET['search'] . "</h2>";
+    }
+
+    sortProducts();
     ?>
     <table class="table table-bordered tableHistory tableHistory1">
         <tr>
