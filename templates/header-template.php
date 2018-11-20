@@ -41,14 +41,17 @@
                         <?php
                     }
                     ?>
-                    <li class="nav-item" style="right: 0px;
-                        position: absolute;
-                        margin-right: 20px;">
+                    <li class="nav-item">
                         <a class="nav-link" href="winkelmand.php">
                             <i class="fa fa-shopping-cart" aria-hidden="true"></i> Winkelmand (<span class="winkelmandCount"><?php echo countCartTotal(); ?></span>)
                         </a>
                     </li>
                 </ul>
+
+                <form class="form-inline my-2 my-lg-0" method="get" action="search.php">
+                    <input class="form-control mr-sm-2" type="search" name="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
             </div>
         </nav>
         <?php
