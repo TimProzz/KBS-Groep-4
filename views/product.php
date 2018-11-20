@@ -1,4 +1,4 @@
-<div class="container product">
+<div class="container product push-padding">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb" >
             <li class="breadcrumb-item"><a href="index.php">Home</a></li>
@@ -14,7 +14,7 @@
     </nav>
     <div class="row">
         <div class="col-lg-6">
-            <img class="img-fluid" src="https://via.placeholder.com/500">
+            <img class="img-fluid" src="<?php if($row['imageName'] != '') { echo 'uploads/' . $row['imageName']; } else { echo 'https://via.placeholder.com/500'; } ?>">
         </div>
         <div class="col-lg-6 productInfo">
             <h5 class="card-title">
@@ -35,4 +35,18 @@
             <a href="#" class="btn btn-primary submitWinkelmand" data-id="<?php echo $row["StockItemID"]; ?>">In Winkelmand</a>
         </div>
     </div>
+    <?php
+        if(userLoggedIn()) {
+            while($userDetailsResult = $userDetails->fetch()) {
+                if($userDetailsResult["rechten"] <= 2) {
+                    ?>
+                        <form action="product.php?id=<?php echo $row["StockItemID"]; ?>" method="post" enctype="multipart/form-data">
+                            <input type="file" name="fileToUpload" id="fileToUpload"><br>
+                            <input type="submit" value="Upload Foto" name="submitUploadPic">
+                        </form>
+                    <?php
+                }
+            }
+        }
+    ?>
 </div>

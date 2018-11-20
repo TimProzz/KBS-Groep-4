@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container push-padding">
     <h2>Account details</h2>
     <hr>
     <h3>NAW gegevens wijzigen</h3>

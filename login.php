@@ -6,8 +6,8 @@ $views = "views/login.php";
 
 <?php
 
-if (isset($_COOKIE["login"])) {
-    header("Location: /?error=You're already logged in!");
+if (userLoggedIn()) {
+    header("Location: index.php?error=You're already logged in!");
     exit;
 }
 

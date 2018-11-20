@@ -1,4 +1,4 @@
-<div class="container product">
+<div class="container product push-padding">
     <h1>
         Winkelmand
     </h1>
