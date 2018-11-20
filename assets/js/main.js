@@ -113,4 +113,32 @@ $(document).ready(function() {
         var newTotaalItems = countCartTotalItems();
         $(".winkelmandCount").html(newTotaalItems);
     });
+    
+    var getUrlParameter = function getUrlParameter(sParam) {
+        var sPageURL = window.location.search.substring(1),
+            sURLVariables = sPageURL.split('&'),
+            sParameterName,
+            i;
+
+        for (i = 0; i < sURLVariables.length; i++) {
+            sParameterName = sURLVariables[i].split('=');
+
+            if (sParameterName[0] === sParam) {
+                return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+            }
+        }
+    };
+    
+    $(".sort").change(function() {
+        var valueOfSort = $(".sort").val();
+        var pathname = window.location.pathname;
+        if(getUrlParameter('id') != undefined) {
+            var urlSort = pathname + "?sort=" + valueOfSort + "&id=" + getUrlParameter('id');
+        } else {
+            var urlSort = pathname + "?sort=" + valueOfSort;
+        }
+        //console.log(urlSort);
+        
+        window.location.href = urlSort;
+    });
 });

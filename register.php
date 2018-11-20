@@ -38,11 +38,13 @@ if (isset($_POST["register"])) {
 
     if (count($errorMessages) == 0) {
         $hashedPassword = hashedPassword512($username, $password);
+        $rechten = 2;
 
         try {
-            $query = $pdo->prepare("INSERT INTO users (username, password) VALUES (:username, :password)");
+            $query = $pdo->prepare("INSERT INTO users (username, password, rechten) VALUES (:username, :password, :rechten)");
             $query->bindValue(':username', $username);
             $query->bindValue(':password', $hashedPassword);
+            $query->bindValue(':rechten', $rechten);
             $query->execute();
 
             $registerSuccessful = "You've successfully registered yourself. You can now <a href='login.php'>login</a> using your details!";
