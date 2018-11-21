@@ -3,29 +3,39 @@ $(document).ready(function() {
     //$.cookie("winkelmand", '{"list":[{"productid":1,"hoeveel":2,"active":true},{"productid":2,"hoeveel":5,"active":true}],"id":2}');
     
     var pageCount = 0;
+    var currentPageNumber = 1;
 
     $( ".tableHistory" ).each(function() {
         pageCount++;
+        //console.log(pageCount);
         var classname = this.className;
         var singleClassname = classname.replace('table table-bordered tableHistory ','');
         var idClassname = "#" + singleClassname;
         
         $(idClassname).click(function() {
-            console.log("test");
             var number = this.id;
             // number is name of div to show
             for(var i = 1; i <= pageCount; i++) {
                 var classNameToChange = ".tableHistory" + i;
                 var classNameFontToChange = "#tableHistory" + i;
-                $(classNameToChange).css("display", "none");  
-                $(classNameFontToChange).css("font-weight", "normal");  
+                $(classNameToChange).css("display", "none");
+                
+                $(classNameFontToChange).removeClass("pageSelected");
+                
+                $(classNameFontToChange).css("font-weight", "normal"); 
                 $(classNameFontToChange).css("text-decoration", "none");  
-                $(this).css("font-weight", "bold");  
-                $(this).css("text-decoration", "underline");  
+                //$(this).css("font-weight", "bold");  
+                //$(this).css("text-decoration", "underline");  
             }
+            
+            $(this).toggleClass("pageSelected");
+            
             var classNameToShow = "." + number;
             $(classNameToShow).css("display", "table");
             
+            //console.log(classNameToShow);
+            
+            /*
             $(classNameToShow + " .galleryIMG").each(function() {
                 var nameOfFile = $(this).attr("href");
                 var divToChange = $(this).find(".imageToLoad");
@@ -34,10 +44,46 @@ $(document).ready(function() {
                     divToChange.attr("src", nameOfFile);
                 }, randomNumber); 
             });
-
-            $(window).scrollTop($('.pageSelect').offset().top - ($(window).height() / 2));
+            */
+            //$(window).scrollTop($('.pageSelect').offset().top - ($(window).height() / 2));
         });
     });
+    
+    $(".buttonPageSelect").on("click", function() {
+        var currentPageID = $(".pageSelected").attr('id');
+        var clickedButtonID = $(this).attr('id');
+        var currentPageString = currentPageID.replace("tableHistory", "");
+        var currentPageNumber = parseInt(currentPageString);
+        
+        changePageNumber(currentPageNumber, clickedButtonID);
+    });
+    
+    var removeAttributesPageSelect = function() {
+        for(var i = 1; i <= pageCount; i++) {
+            var classNameToChange = ".tableHistory" + i;
+            var classNameFontToChange = "#tableHistory" + i;
+            $(classNameToChange).css("display", "none");
+
+            $(classNameFontToChange).removeClass("pageSelected");
+
+            $(classNameFontToChange).css("font-weight", "normal"); 
+            $(classNameFontToChange).css("text-decoration", "none");  
+            //$(this).css("font-weight", "bold");  
+            //$(this).css("text-decoration", "underline");  
+        }
+    }
+    
+    var changePageNumber = function(currentPageNumber, clickedButtonID) {
+        if(clickedButtonID == "nextButton" && (currentPageNumber + 1) <= pageCount) {
+            removeAttributesPageSelect();
+            $("#tableHistory" + (currentPageNumber + 1)).addClass("pageSelected");
+            $(".tableHistory" + (currentPageNumber + 1)) .css("display", "table");
+        } else if(clickedButtonID == "prevButton" && (currentPageNumber - 1) >= 1) {
+            removeAttributesPageSelect();
+            $("#tableHistory" + (currentPageNumber - 1)).addClass("pageSelected");
+            $(".tableHistory" + (currentPageNumber - 1)) .css("display", "table");
+        }
+    }
     
     var getDefaultObject = function() {
         return {
