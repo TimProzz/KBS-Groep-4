@@ -4,7 +4,7 @@ body{
 
 .container{
     background-color: #fff!important;
-    padding-top: 100px;
+    /* padding-top: 100px; */
 }
 
 .tableHistory {
@@ -42,28 +42,51 @@ body{
 .linkReactPage {
     text-decoration: none;
     font-weight: normal;
-    padding-left: 8px;
+    padding: 0 8px;
+    border-right: 1px solid #d6d6d6;
+    line-height: 30px;
+    display: inline-block
+}
+
+.linkReactPage:hover, .buttonPageSelect:hover {
+    cursor: pointer;
+}
+
+.linkReactPage:last-child {
+    border: none;
 }
 
 .pageSelect {
     text-align: center;
-    font-size: 24px;
+    font-size: 14px;
+    margin-top: -10px;
+    background: #fff;
 }
 
-.productInfo{
+.productInfo {
     position: absolute!important;
     bottom: 0px;
     right: 0px;
     height: 500px
 }
 
-.product{
+.product {
     padding: 100px 15px 50px;
 }
 
-.navbar {
+.navbar-fixed {
+    background: #e9ecef!important;
     position: fixed!important;
     top: 0!important;
+    width: 100%;
+    height: 70px;
+    border-bottom: 1px solid grey;
+    z-index: 999;
+}
+
+.navbar {
+    /*position: fixed!important;
+    top: 0!important;*/
     width: 100%;
     
     -webkit-box-shadow: 0px 1px 5px 0px rgba(48,48,48,0.4);
@@ -71,8 +94,16 @@ body{
     box-shadow: 0px 1px 5px 0px rgba(48,48,48,0.4);
 }
 
+.nav-link{
+    padding: 0px 5px!important;
+}
+
 .breadcrumb {
     background-color: transparent!important;
+}
+
+.push {
+    margin-top: 70px!important;
 }
 
 .loggedIn {
@@ -81,4 +112,111 @@ body{
     left: 0;
     background: orange;
     padding: 2px;
+    z-index: 999;
+}
+
+.singleMenuItem {
+    width: 33.33%;
+    float: left;
+    height: 100%;
+}
+
+.logo-img {
+    height: 70px;
+    width: 100%;
+    background-size: contain!important;
+}
+
+.search-form {
+    display: block!important;
+    text-align: center;
+    position: relative;
+    top: 15px;
+}
+
+.winkelmandStyle {
+    background: red;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    border-radius: 100%;
+    position: absolute;
+    top: 0;
+    margin-left: -10px;
+    color: #fff;
+}
+
+.singleLink {
+    margin: 0 auto;
+    display: block!important;
+    color: #00BCF2;
+    top: 15px;
+    position: relative;
+    float: right;
+    text-align: center;
+}
+
+.singleLink i {
+    font-size: 32px;
+}
+
+.singleMenuItemContent {
+    height: 100%;
+}
+
+.navbar-fix {
+    margin: 0 auto;
+}
+
+.push-padding {
+    padding-top: 30px;
+}
+
+.search-form-style {
+    font-size: 12px!important;
+    width: 60%!important;
+}
+
+.navUserName {
+    margin-right: 7px;
+}
+
+.specialNavBar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pageSelectInner {
+    display: inline-block;
+    border-top: 1px solid #d6d6d6;
+    border-bottom: 1px solid #d6d6d6;
+}
+
+.buttonPageSelect {
+    display: inline;
+    background: #fff;
+    border: 1px solid #d6d6d6;
+    border-top-right-radius: 0px;
+    margin: 0;
+    line-height: 28px;
+}
+
+.buttonPrev {
+    position: relative;
+    left: 4px;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+}
+
+.buttonNext {
+    position: relative;
+    left: -4px;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+
+.pageSelected {
+    background: #007bff;
+    color: #fff!important;
 }

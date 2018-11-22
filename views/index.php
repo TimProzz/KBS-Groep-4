@@ -1,8 +1,15 @@
 <?php
-    $postNumber = 0;
-    $postRowDiv = 1;
+$postNumber = 0;
+$postRowDiv = 1;
 ?>
-<div class="container">
+<div class="container push-padding">
+    <?php
+    if (isset($_GET['search'])) {
+        echo "<h2>" . $_GET['search'] . "</h2>";
+    }
+
+    sortProducts();
+    ?>
     <table class="table table-bordered tableHistory tableHistory1">
         <tr>
             <th><b>Nummer:</b></th>
@@ -43,12 +50,15 @@
         ?>
     </table>
     <div class="pageSelect">
-        <?php
-        echo "Pagina: ";
-        for ($i = 1; $i <= $postRowDiv; $i++) {
-            ?><a class="linkReactPage reactionPageNumber<?php echo $i; ?>" id="tableHistory<?php echo $i; ?>"><?php echo $i; ?></a><?php
-        }
-        ?>
+        <button class="buttonPageSelect buttonPrev" id="prevButton">Previous</button>
+        <div class="pageSelectInner">
+            <?php
+            for ($i = 1; $i <= $postRowDiv; $i++) {
+                ?><a class="linkReactPage reactionPageNumber<?php echo $i; if($i == 1) { echo ' pageSelected'; } ?>" id="tableHistory<?php echo $i; ?>"><?php echo $i; ?></a><?php
+            }
+            ?>
+        </div>
+        <button class="buttonPageSelect buttonNext" id="nextButton">Next</button>
     </div>
     <br>
 </div><br>

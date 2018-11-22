@@ -4,10 +4,55 @@
 ?>
 
 <?php
-    $stockItems = $pdo->query("SELECT * FROM StockItems S
+    if(!isset($_GET["sort"])) {
+        $stockItems = $pdo->query("SELECT * FROM StockItems S
             JOIN stockitemstockgroups SG ON S.StockItemID = SG.StockItemID
             JOIN stockgroups G ON SG.StockGroupID = G.StockGroupID
             WHERE G.StockGroupID = " . $_GET['id']);
+    } else {
+        $sortValue = $_GET["sort"];
+        
+        switch($sortValue) {
+            case "Naam":
+                $stockItems = $pdo->query("SELECT * FROM StockItems S
+                    JOIN stockitemstockgroups SG ON S.StockItemID = SG.StockItemID
+                    JOIN stockgroups G ON SG.StockGroupID = G.StockGroupID
+                    WHERE G.StockGroupID = " . $_GET['id'] . "
+                    ORDER BY S.StockItemName");
+                break;
+            case "Prijs1":
+                $stockItems = $pdo->query("SELECT * FROM StockItems S
+                    JOIN stockitemstockgroups SG ON S.StockItemID = SG.StockItemID
+                    JOIN stockgroups G ON SG.StockGroupID = G.StockGroupID
+                    WHERE G.StockGroupID = " . $_GET['id'] . "
+                    ORDER BY S.UnitPrice");
+                break;
+            case "Prijs2":
+                $stockItems = $pdo->query("SELECT * FROM StockItems S
+                    JOIN stockitemstockgroups SG ON S.StockItemID = SG.StockItemID
+                    JOIN stockgroups G ON SG.StockGroupID = G.StockGroupID
+                    WHERE G.StockGroupID = " . $_GET['id'] . "
+                    ORDER BY S.UnitPrice DESC");
+                break;
+            case "Nieuwste":
+                $stockItems = $pdo->query("SELECT * FROM StockItems S
+                    JOIN stockitemstockgroups SG ON S.StockItemID = SG.StockItemID
+                    JOIN stockgroups G ON SG.StockGroupID = G.StockGroupID
+                    WHERE G.StockGroupID = " . $_GET['id'] . "
+                    ORDER BY S.StockItemID");
+                break;
+            case "Oudste":
+                $stockItems = $pdo->query("SELECT * FROM StockItems S
+                    JOIN stockitemstockgroups SG ON S.StockItemID = SG.StockItemID
+                    JOIN stockgroups G ON SG.StockGroupID = G.StockGroupID
+                    WHERE G.StockGroupID = " . $_GET['id'] . "
+                    ORDER BY S.StockItemID DESC");
+                break;
+            default:
+                $stockItems = $pdo->query("SELECT * FROM StockItems 
+                    WHERE G.StockGroupID = " . $_GET['id']);
+        }
+    }
 
     // uitvoeren
 
@@ -19,7 +64,7 @@
 
     // uitvoeren
     $stmt->execute();
-    $row = $stmt->fetch();     
+    $row = $stmt->fetch();  
 ?>
 
 <?php

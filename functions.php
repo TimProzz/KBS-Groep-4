@@ -39,7 +39,28 @@
         setcookie("login", $username, time() + (86400 * 30), "/"); //Set username as login for 30 days
     }
 
+    function userLoggedIn() {
+        if(isset($_COOKIE["login"])) {
+            return true;
+        }
+    }
+
     function hashedPassword512($username, $password) { // Hashes the password with username and password
         return hash("sha512", $username.$password);
+    }
+
+    function sortProducts() {
+        ?>
+            <div class="sortProducts">
+                <select class="sort">
+                    <option selected="true" disabled="disabled">Sorteren op:</option>
+                    <option value="Naam">Naam</option>
+                    <option value="Prijs1">Prijs (laag-hoog)</option>
+                    <option value="Prijs2">Prijs (hoog-laag)</option>
+                    <option value="Nieuwste">Nieuwste</option>
+                    <option value="Oudste">Oudste</option>
+                </select>
+            </div>
+        <?php
     }
 ?>

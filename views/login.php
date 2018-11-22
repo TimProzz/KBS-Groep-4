@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container push-padding">
     <h2>Login</h2>
     <form action="login.php" method="post">
         <input type="text" name="username" placeholder="Username" required><br>
@@ -12,4 +12,5 @@
         }
     }
     ?>
+    <p>Nog geen account? <a href="register.php">Registreer hier!</a></p>
 </div>

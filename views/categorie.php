@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container push-padding">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="index.php">Home</a></li>
@@ -7,6 +7,9 @@
             </li>
         </ol>
     </nav>
+    <?php
+        sortProducts();
+    ?>
     <table class="table table-bordered tableHistory tableHistory1">
         <tr>
             <th><b>Nummer:</b></th>
@@ -47,12 +50,15 @@
         ?>
     </table>
     <div class="pageSelect">
-        <?php
-        echo "Pagina: ";
-        for ($i = 1; $i <= $postRowDiv; $i++) {
-            ?><a class="linkReactPage reactionPageNumber<?php echo $i; ?>" id="tableHistory<?php echo $i; ?>"><?php echo $i; ?></a><?php
-        }
-        ?>
+        <button class="buttonPageSelect buttonPrev" id="prevButton">Previous</button>
+        <div class="pageSelectInner">
+            <?php
+            for ($i = 1; $i <= $postRowDiv; $i++) {
+                ?><a class="linkReactPage reactionPageNumber<?php echo $i; if($i == 1) { echo ' pageSelected'; } ?>" id="tableHistory<?php echo $i; ?>"><?php echo $i; ?></a><?php
+            }
+            ?>
+        </div>
+        <button class="buttonPageSelect buttonNext" id="nextButton">Next</button>
     </div>
     <br>
 
