@@ -14,12 +14,18 @@
     </nav>
     <div class="row">
         <div class="col-lg-6">
-            <img class="img-fluid" src="https://via.placeholder.com/500">
+            <?php
+            echo '<img class="img-fluid" src="' . $row["Photo"] . '">'; 
+            ?>
+            <img class="img-fluid" src="assets/images/strand-badeend.jpg">
         </div>
         <div class="col-lg-6 productInfo">
             <h5 class="card-title">
                 <?php echo $row["StockItemName"]; ?>
             </h5>
+            <p class="card-text mb-2 text-muted">
+               <?php echo $row["MarketingComments"]; ?>
+            </p>
             <h6 class="card-subtitle mb-2 text-muted">
                 &euro;<?php echo $row["UnitPrice"]; ?>
             </h6>
