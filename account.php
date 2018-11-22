@@ -17,15 +17,27 @@ $errorMessages = array();
 $accountDetails = $pdo->query("SELECT * FROM users WHERE username ='" . $_COOKIE['login'] . "'");
 
 if (isset($_POST["changeNAW"])) {
-    $naam = $_POST["naam"];
-    $adres = $_POST["adres"];
+    $email = $_POST["email"];
+    $voornaam = $_POST["voornaam"];
+    $tussenvoegsels = $_POST["tussenvoegsels"];
+    $achternaam = $_POST["achternaam"];
+    $straat = $_POST["straat"];
+    $huisnummer = $_POST["huisnummer"];
     $woonplaats = $_POST["woonplaats"];
+    $postcode = $_POST["postcode"];
+    $telefoonnummer = $_POST["telefoonnummer"];
 
     try {
-        $query = $pdo->prepare("UPDATE users SET naam = :naam, adres = :adres, woonplaats = :woonplaats WHERE username = '" . $_COOKIE['login'] . "'");
-        $query->bindValue(':naam', $naam);
-        $query->bindValue(':adres', $adres);
+        $query = $pdo->prepare("UPDATE users SET email = :email, voornaam = :voornaam, tussenvoegsels = :tussenvoegsels, achternaam = :achternaam, straat = :straat, huisnummer = :huisnummer, woonplaats = :woonplaats, postcode = :postcode, telefoonnummer = :telefoonnummer WHERE username = '" . $_COOKIE['login'] . "'");
+        $query->bindValue(':email', $email);
+        $query->bindValue(':voornaam', $voornaam);
+        $query->bindValue(':tussenvoegsels', $tussenvoegsels);
+        $query->bindValue(':achternaam', $achternaam);
+        $query->bindValue(':straat', $straat);
+        $query->bindValue(':huisnummer', $huisnummer);
         $query->bindValue(':woonplaats', $woonplaats);
+        $query->bindValue(':postcode', $postcode);
+        $query->bindValue(':telefoonnummer', $telefoonnummer);
         $query->execute();
 
         $changeSuccessful = "You've successfully changed your NAW details!";
