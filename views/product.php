@@ -21,7 +21,7 @@
                 <?php echo $row["StockItemName"]; ?>
             </h5>
             <h6 class="card-subtitle mb-2 text-muted">
-                &euro;<?php echo $row["UnitPrice"]; ?>
+                &euro;<?php echo $row["RecommendedRetailPrice"]; ?>
             </h6>
             <p class="card-text">
                 <?php while ($cat = $stmt->fetch()) { ?>

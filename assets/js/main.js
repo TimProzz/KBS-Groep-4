@@ -120,9 +120,50 @@ $(document).ready(function() {
         count = 0;
     }
     
+    var getNewCartPrices = function(obj, numberToAdd, productIdThatChanged) {
+        var count = 0;
+        var thePriceOfProduct;
+        var totalPrice = 0;
+        if(typeof obj["listW"] !== 'undefined' && obj["listW"].length > 0) {
+            $(obj["listW"]).each(function() {
+                var check = 0;
+                var checkNew = 0;
+                $.ajax({
+                    async: false,
+                    type: "POST",
+                    url: "winkelmand.php",
+                    dataType:'json',
+                    data: {
+                        newProductID: obj["listW"][count]["productid"],
+                    },
+                    success: function(data) {
+                        thePriceOfProduct = data;
+                    }
+                });
+                var countOfProduct = obj["listW"][count]["hoeveel"];
+                var newPrice = thePriceOfProduct * countOfProduct;
+                totalPrice += newPrice;
+
+                //$(".fullProductRow").find(".dynamicPriceProduct[data-id='" + obj["listW"][count]["productid"] + "']").html(newPrice.toFixed(2));
+                
+                if(numberToAdd == 0) {
+                    $(".fullProductRow[data-id='" + productIdThatChanged + "']").remove(".fullProductRow");
+                } else {
+                    $(".fullProductRow").find(".dynamicPriceProduct[data-id='" + obj["listW"][count]["productid"] + "']").html(newPrice.toFixed(2));
+                }
+                count++;
+            });
+        } else {
+            $(".fullProductRow[data-id='" + productIdThatChanged + "']").remove(".fullProductRow");
+        }
+        $(".dynamicPriceProductTotal").html(totalPrice.toFixed(2));
+    }
+    
     $(".submitWinkelmand").on("click", function() {
         var id = parseInt($(this).attr("data-id"));
         var numberToAdd = parseInt($(".numberWinkelmand" + id).val());
+        
+        var confirmed = 0;
         
         var theJson = loadCart();
         if(!theJson) {
@@ -134,6 +175,7 @@ $(document).ready(function() {
         var check = 0;
         
         if(numberToAdd > 0) {
+            confirmed = 1;
             $(obj["listW"]).each(function() {
                 if(obj["listW"][count]["productid"] == id && check == 0) {
                     obj["listW"][count]["hoeveel"] = numberToAdd;
@@ -146,18 +188,25 @@ $(document).ready(function() {
                 obj["listW"].push({"productid":id,"hoeveel":numberToAdd,"active":true});
             }
         } else {
-            $(obj["listW"]).each(function() {
-                if(obj["listW"][count]["productid"] == id && check == 0) {
-                    obj["listW"].splice(count, 1);
-                    check = 1;
-                    return;
-                }
-                count++;
-            });
+            if(confirm('Weet je zeker dat je dit product uit je winkelmandje wilt verwijderen?')) {
+                confirmed = 1;
+                $(obj["listW"]).each(function() {
+                    if(obj["listW"][count]["productid"] == id && check == 0) {
+                        obj["listW"].splice(count, 1);
+                        check = 1;
+                        return;
+                    }
+                    count++;
+                });
+            }
         }
-        submitDataToCookie(obj, check, count);
-        var newTotaalItems = countCartTotalItems();
-        $(".winkelmandCount").html(newTotaalItems);
+        if(confirmed == 1) {
+            submitDataToCookie(obj, check, count);
+            var newTotaalItems = countCartTotalItems();
+            $(".winkelmandCount").html(newTotaalItems);
+
+            getNewCartPrices(obj, numberToAdd, id);
+        }
     });
     
     var getUrlParameter = function getUrlParameter(sParam) {
