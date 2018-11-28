@@ -31,6 +31,16 @@
                     ,
                 <?php } ?>
             </p>
+            <p class="card-supply"><?php 
+                if($row["QuantityOnHand"] >= 10) { 
+                    echo "Voorraad: <span class='SupplyHigh'>10+</span>"; 
+                } elseif ($row["QuantityOnHand"] < 10 && $row["QuantityOnHand"] > 0) {
+                    echo "Voorraad: <span class= 'SupplyLow'>" . $row["QuantityOnHand"] . "</span>"; 
+                  
+                } elseif($row["QuantityOnHand"] <= 0) { 
+                    echo "<span class= 'SupplyLow'> Product uitverkocht! </span>"; 
+                  
+                } ?></p>
             <input type="number" name="hoeveel" min="0" placeholder="<?php echo getCartTotal($row["StockItemID"]); ?>" value="<?php echo getCartTotal($row["StockItemID"]); ?>" class="numberWinkelmand numberWinkelmand<?php echo $row["StockItemID"]; ?>">
             <a href="#" class="btn btn-primary submitWinkelmand" data-id="<?php echo $row["StockItemID"]; ?>">In Winkelmand</a>
         </div>
