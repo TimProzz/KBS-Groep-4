@@ -364,3 +364,7 @@ body{
 .card-image {
     height: 250px;
 }
+
+.formGoToCheckout {
+    float: right;
+}
