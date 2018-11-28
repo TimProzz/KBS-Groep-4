@@ -6,7 +6,8 @@
 <?php
     if(!isset($_GET["sort"])) {
         $stockItems = $pdo->query("SELECT * FROM StockItems S
-        LEFT JOIN productimages P ON S.StockItemID = P.productid");
+        LEFT JOIN productimages P ON S.StockItemID = P.productid
+        JOIN stockitemholdings SH ON SH.StockItemID = S.StockItemID");
     } else {
         $sortValue = $_GET["sort"];
         
