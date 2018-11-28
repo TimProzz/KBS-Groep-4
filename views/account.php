@@ -16,10 +16,7 @@
 
     while ($row = $accountDetails->fetch()) {
         ?>
-            <form action="account.php" method="post">
-                Email:<br><input type="text" name="email" placeholder="Email" value="<?php if (!empty($row['email'])) {
-            echo $row['email'];
-        } ?>"><br>
+    <form action="account.php" method="post">
                 Voornaam:<br><input type="text" name="voornaam" placeholder="Voornaam" value="<?php if (!empty($row['voornaam'])) {
             echo $row['voornaam'];
         } ?>"><br>
@@ -28,7 +25,7 @@
         } ?>"><br>
                 Achternaam:<br><input type="text" name="achternaam" placeholder="Achternaam" value="<?php if (!empty($row['achternaam'])) {
             echo $row['achternaam'];
-        } ?>"><br>
+        } ?>"><br><br>
                 Straat:<br><input type="text" name="straat" placeholder="Straat" value="<?php if (!empty($row['straat'])) {
             echo $row['straat'];
         } ?>"><br>
@@ -40,10 +37,13 @@
         } ?>"><br>
                 Postcode:<br><input type="text" name="postcode" placeholder="Postcode" value="<?php if (!empty($row['postcode'])) {
             echo $row['postcode'];
+        } ?>"><br><br><br>
+                Email:<br><input type="text" name="email" placeholder="Email" value="<?php if (!empty($row['email'])) {
+            echo $row['email'];
         } ?>"><br>
                 Telefoonnummer:<br><input type="number" name="telefoonnummer" placeholder="Telefoonnummer" value="<?php if (!empty($row['telefoonnummer'])) {
             echo $row['telefoonnummer'];
-        } ?>"><br>
+        } ?>"><br><br>
                 <input type="submit" value="Submit" name="changeNAW">
             </form>
         <?php
@@ -54,7 +54,7 @@
     <form action="account.php" method="post">
         Oud wachtwoord:<br><input type="password" name="oldPassword" placeholder="Old password" required><br>
         Nieuw wachtwoord:<br><input type="password" name="newPassword" placeholder="New password" required><br>
-        Nieuw wachtwoord opnieuw:<br><input type="password" name="newPasswordAgain" placeholder="New password opnieuw" required><br>
+        Nieuw wachtwoord opnieuw:<br><input type="password" name="newPasswordAgain" placeholder="New password opnieuw" required><br><br>
         <input type="submit" value="Submit" name="changePW">
     </form>
 </div>

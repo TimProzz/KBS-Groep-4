@@ -14,6 +14,7 @@ $postRowDiv = 1;
         <tr>
             <th><b>Nummer:</b></th>
             <th><b>Naam:</b></th>
+            <th><b>Prijs:</b></th>
             <th><b>Aantal:</b></th>
             <th><b>Voeg toe aan winkelmand:</b></th>
         </tr>
@@ -32,6 +33,7 @@ $postRowDiv = 1;
                 <tr>
                     <th><b>Nummer:</b></th>
                     <th><b>Naam:</b></th>
+                    <th><b>Prijs:</b></th>
                     <th><b>Aantal:</b></th>
                     <th><b>Voeg toe aan winkelmand:</b></th>
                 </tr>
@@ -42,6 +44,7 @@ $postRowDiv = 1;
             <tr>
                 <th><b><?php echo $countRows; ?></b><?php echo ". "; ?></th>
                 <th><a href="product.php?id=<?php echo $singleStockItem["StockItemID"]; ?>"><?php echo $singleStockItem["StockItemName"]; ?></a></th>
+                <th><span><?php echo $singleStockItem["RecommendedRetailPrice"]; ?></span></th>
                 <th><input type="number" name="hoeveel" min="0" placeholder="<?php echo getCartTotal($singleStockItem["StockItemID"]); ?>" value="<?php echo getCartTotal($singleStockItem["StockItemID"]); ?>" class="numberWinkelmand numberWinkelmand<?php echo $singleStockItem["StockItemID"]; ?>"></th>
                 <th><input type="submit" name="submitWinkelmand" class="submitWinkelmand" data-id="<?php echo $singleStockItem["StockItemID"]; ?>"></th>
             </tr>
