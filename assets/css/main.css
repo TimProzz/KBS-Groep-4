@@ -368,3 +368,15 @@ body{
 .formGoToCheckout {
     float: right;
 }
+
+.card-supply {
+    color: black;
+}
+
+.SupplyLow {
+    color: red;
+}
+
+.SupplyHigh {
+    color: green;
+}
