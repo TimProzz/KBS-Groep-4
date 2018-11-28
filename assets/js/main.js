@@ -1,6 +1,37 @@
+var slideIndex = 1;
+
+// Next/previous controls
+function plusSlides(n) {
+    showSlides(slideIndex += n);
+}
+
+// Thumbnail image controls
+function currentSlide(n) {
+    showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+    var i;
+    var slides = document.getElementsByClassName("mySlides");
+    var dots = document.getElementsByClassName("dot");
+    if (n > slides.length) {slideIndex = 1} 
+    if (n < 1) {slideIndex = slides.length}
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none"; 
+    }
+    for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex-1].style.display = "block"; 
+    //dots[slideIndex-1].className += " active";
+}
+
 $(document).ready(function() {
-    
     //$.cookie("winkelmand", '{"list":[{"productid":1,"hoeveel":2,"active":true},{"productid":2,"hoeveel":5,"active":true}],"id":2}');
+    
+    if($(".slideshow-container")[0]) {
+        showSlides(slideIndex);
+    }
     
     var pageCount = 0;
     var currentPageNumber = 1;
@@ -9,7 +40,7 @@ $(document).ready(function() {
         pageCount++;
         //console.log(pageCount);
         var classname = this.className;
-        var singleClassname = classname.replace('table table-bordered tableHistory ','');
+        var singleClassname = classname.replace('tableHistory ','');
         var idClassname = "#" + singleClassname;
         
         $(idClassname).click(function() {
@@ -31,7 +62,7 @@ $(document).ready(function() {
             $(this).toggleClass("pageSelected");
             
             var classNameToShow = "." + number;
-            $(classNameToShow).css("display", "table");
+            $(classNameToShow).css("display", "block");
             
             //console.log(classNameToShow);
             

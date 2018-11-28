@@ -10,25 +10,6 @@ body{
 .tableHistory {
     width: 100%;
     font-weight: normal !important;
-    background: grey;
-}
-
-.tableHistory tr:nth-child(even) {
-    background: rgb(255, 255, 255);
-}
-
-.tableHistory tr:nth-child(odd) {
-    background: rgb(230, 230, 230);
-}
-
-.tableHistory th {
-    height: 40px;
-    padding: 5px 0;
-}
-
-.tableHistory img {
-    max-width: 400px;
-    max-height: 300px;
 }
 
 .tableHistory {
@@ -61,6 +42,8 @@ body{
     font-size: 14px;
     margin-top: -10px;
     background: #fff;
+    margin: 0 auto;
+    padding-bottom: 30px;
 }
 
 .productInfo {
@@ -219,4 +202,165 @@ body{
 .pageSelected {
     background: #007bff;
     color: #fff!important;
+}
+
+
+
+
+
+.product{
+    color: black;
+    font-size: 15px;
+    }
+    .artikel{
+        padding: 50px 20px;
+        float: left;
+    }
+    
+    .btn-outline-success{
+        background: #00bcf2;
+        border-color: #818182;
+        color: white;
+    }
+    
+    .btn-outline-success:hover{
+        background: #007bff;
+        border-color: #818182;
+        
+    }
+    
+    .card-text{
+        height: 60px;
+    }
+    
+    .card-title{
+        height: 50px
+    }
+    
+    .wagen{
+        background-color: #00bcf2;
+        border-color: #818182;
+/*        border-radius: 0;*/
+       
+    }
+    
+    * {box-sizing:border-box}
+
+    .img {
+        height: 300px;
+        width: 100%;
+   
+    }
+    
+    .btn-group{
+        max-width: 1140px;
+        border-radius: 0;
+        overflow: hidden;
+    }
+    
+    .btn-group>button{
+        width: 130px;
+        border-radius: 0;
+        color: #818182;
+        background-color: #eee;
+        border-color: lightgrey;
+    }
+    
+    .btn-group>button:hover {
+    background-color: #eee;
+    color: #00bcf2;
+    border-color: lightgrey;
+    
+}
+/* Slideshow container */
+.slideshow-container {
+  height: 300px;
+  position: relative;
+  margin: auto;
+  max-width: 1140px;
+}
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+  
+}
+
+.price{
+    position: absolute;
+    bottom: 16px;
+    right: 20px;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+.card-image {
+    height: 250px;
 }
