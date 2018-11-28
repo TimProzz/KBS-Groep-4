@@ -72,6 +72,7 @@
 <?php
     $stmt = $pdo->prepare("SELECT * FROM StockItems S
                     JOIN stockitemstockgroups SG ON S.StockItemID = SG.StockItemID
+                    JOIN stockitemholdings SH ON S.StockItemID = SH.StockItemID
                     JOIN stockgroups G ON SG.StockGroupID = G.StockGroupID
                     LEFT JOIN productimages PI ON S.StockItemID = PI.productid
                     WHERE S.StockItemID = " . $_GET['id']);
