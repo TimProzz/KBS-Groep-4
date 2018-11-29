@@ -4,6 +4,23 @@
 ?>
 
 <?php
+    if(isset($_POST["submitYoutubeLink"]) && userLoggedIn()) {
+        $postID = $_GET["id"];
+        $youtubelink = $_POST["linkToSubmit"];
+        $countIfResult = 0;
+                
+                $stmt = $pdo->query("SELECT * FROM productimages WHERE productid = '" . $postID . "'");
+                while($row = $stmt->fetch()) {
+                    $countIfResult++;
+                } 
+                if($countIfResult > 0) {
+                    $queryInsertVid = ("UPDATE productimages SET videolink='" . $youtubelink . "' WHERE productid= '". $postID. "'");
+                } else {
+                    $queryInsertVid = ("INSERT INTO productimages (productid, videolink) VALUES ('".$postID."', '".$youtubelink."')");
+                }
+                $queryInsertVidChange = $pdo->prepare( $queryInsertVid );
+                $queryInsertVidChange->execute();
+    }
     if(isset($_POST["submitUploadPic"]) && userLoggedIn()) {
         $target_dir = "uploads/";
         
