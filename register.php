@@ -47,7 +47,8 @@ if (isset($_POST["register"])) {
             $query->bindValue(':rechten', $rechten);
             $query->execute();
 
-            $registerSuccessful = "You've successfully registered yourself. You can now <a href='login.php'>login</a> using your details!";
+            header("Location: register.php?error=You've successfully registered yourself. You can now <a href='login.php'>login</a> using your details!");
+            exit;
         } catch (Exception $e) {
             echo "Failed to register new user: " . $e->getMessage();
         }

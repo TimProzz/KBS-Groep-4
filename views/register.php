@@ -8,15 +8,4 @@
         <input type="password" name="passwordCheck" placeholder="Password again" required><br>
         <input type="submit" value="Submit" name="register">
     </form>
-    <?php
-    if (count($errorMessages) >= 1) {
-        foreach ($errorMessages as $value) {
-            echo $value . "<br />";
-        }
-    }
-
-    if (isset($registerSuccessful)) {
-        echo $registerSuccessful;
-    }
-    ?>
 </div>

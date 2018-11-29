@@ -13,33 +13,5 @@
         </div>
         <button type="submit" value="Submit" name="login" class="btn btn-primary">Inloggen</button>
     </form>
-    <?php
-    if (count($errorMessages) >= 1) {
-        foreach ($errorMessages as $value) {
-            echo $value . "<br />";
-        }
-    }
-    ?>
     <p>Heeft u nog geen account? Maak <a href="register.php">hier</a> uw account aan.</p>
 </div>
-
-<?php
-/*
-<div class="container push-padding">
-    <h2>Login</h2>
-    <form action="login.php" method="post">
-        <input type="text" name="username" placeholder="Username" required><br>
-        <input type="password" name="password" placeholder="Password" required><br>
-        <input type="submit" value="Submit" name="login">
-    </form>
-    <?php
-    if (count($errorMessages) >= 1) {
-        foreach ($errorMessages as $value) {
-            echo $value . "<br />";
-        }
-    }
-    ?>
-    <p>Nog geen account? <a href="register.php">Registreer hier!</a></p>
-</div>
-*/
-?>

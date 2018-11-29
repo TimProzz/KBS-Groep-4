@@ -1,7 +1,9 @@
 <!-- Slideshow container -->
 <div class="slideshow-container">
     <?php
-        $sliderImages = array("https://via.placeholder.com/250", "https://via.placeholder.com/1250");
+        $sliderImages = array("https://via.placeholder.com/250", "https://via.placeholder.com/1250", "https://s.s-bol.com/imgbase0/imagebase3/large/FC/2/4/4/4/9200000085994442.jpg");
+        $countSliders = count($sliderImages);
+        $widthButtons = 100 / $countSliders;
         $sliderImagesCount = 0;
         foreach($sliderImages as $singleSlide) {
             $sliderImagesCount++;
@@ -18,13 +20,13 @@
     <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
     <a class="next" onclick="plusSlides(1)">&#10095;</a>
     
-    <div class="btn-group" role="group" aria-label="Basic example">
+    <div class="btn-group buttons-slider" role="group" aria-label="Basic example">
         <?php
             $sliderImagesCount = 0;
             foreach($sliderImages as $singleSlide) {
                 $sliderImagesCount++;
                 ?>
-                    <button type="button" class="btn btn-secondary" onclick="currentSlide(<?php echo $sliderImagesCount; ?>)">Aanbieding <?php echo $sliderImagesCount; ?></button>
+                    <button type="button" class="btn btn-secondary button-slider" style="width: <?php echo $widthButtons . "%"; ?>" onclick="currentSlide(<?php echo $sliderImagesCount; ?>)">Aanbieding <?php echo $sliderImagesCount; ?></button>
                 <?php
             }
         ?>

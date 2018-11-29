@@ -42,11 +42,17 @@
             echo "<tfoot>
                 <tr>
                 <td><strong>Totaal: ". countCartTotal() ."</strong></td>
-                <td colspan='2'><strong class='winkelmandCount'>" . number_format($totaalPrijs, 2) . "</strong></td>
+                <td colspan='2'><strong class='winkelmandCount'>&euro;" . number_format($totaalPrijs, 2) . "</strong></td>
             
                 </tr>
               </tfoot>";
         ?>
     </table>
+    <?php
+        if(userLoggedIn()) {
+            ?>
     
+            <?php
+        }
+    ?>
 </div>

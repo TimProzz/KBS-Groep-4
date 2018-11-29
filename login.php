@@ -11,8 +11,6 @@ if (userLoggedIn()) {
     exit;
 }
 
-$errorMessages = array();
-
 if (isset($_POST["login"])) {
     $username = $_POST["username"];
     $password = $_POST["password"];
@@ -30,7 +28,8 @@ if (isset($_POST["login"])) {
         header("Location: index.php?success=You've successfully logged in!");
         exit;
     } else {
-        array_push($errorMessages, "Invalid login details. Please try again!");
+        header("Location: login.php?error=Invalid login details. Please try again!");
+        exit;
     }
 }
 ?>

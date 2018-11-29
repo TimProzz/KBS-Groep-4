@@ -27,6 +27,12 @@ function showSlides(n) {
 }
 
 $(document).ready(function() {
+    $(".errorMessage").on("click", function() {
+        $(this).css("bottom", "-200px");
+        setTimeout(function() {
+            $(this).css("display", "none");
+        }, 1000);
+    });
     //$.cookie("winkelmand", '{"list":[{"productid":1,"hoeveel":2,"active":true},{"productid":2,"hoeveel":5,"active":true}],"id":2}');
     
     if($(".slideshow-container")[0]) {
