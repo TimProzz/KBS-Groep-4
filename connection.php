@@ -2,7 +2,7 @@
     try {
 		$serverName = "localhost";
         $usernameDB = "root";
-        $passwordDB = "root";
+        $passwordDB = "";
         $DBName = "wideworldimporters";
 		
         $pdo = new PDO("mysql:host=$serverName;dbname=$DBName", $usernameDB, $passwordDB);
