@@ -451,3 +451,29 @@ body{
     color: #ff0000;
     margin-left: 2px;
 }
+
+.overzicht-bestellen {
+    width: 100%;
+    overflow: hidden;
+}
+
+.single-overzicht {
+    width: 33.33%;
+    float: left;
+    border-left: 1px solid #dee2e6;
+    padding: 0 0 0 10px;
+}
+
+.single-overzicht:first-child {
+    border-left: none;
+    padding: 0;
+}
+
+.flex-fix {
+    display: flex;
+}
+
+.full-button {
+    color: #fff!important;
+    background-color: #28a745!important;
+}

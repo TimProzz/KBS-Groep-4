@@ -78,5 +78,32 @@
         return 'https://www.youtube.com/embed/' . $youtube_id ;
     }
 
+    function getDutchDayFromDate($date) {
+        switch(date('D', strtotime($date))) {
+            case "Mon":
+                return "Maandag";
+                break;
+            case "Tue":
+                return "Dinsdag";
+                break;
+            case "Wed":
+                return "Woensdag";
+                break;
+            case "Thu":
+                return "Donderdag";
+                break;
+            case "Fri":
+                return "Vrijdag";
+                break;
+            case "Sat":
+                return "Zaterdag";
+                break;
+            case "Sun":
+                return "Zondag";
+                break;
+            default:
+                return "UNDEFINED Datum?";
+        }
+    }
 
 ?>

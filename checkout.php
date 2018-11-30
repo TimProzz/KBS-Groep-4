@@ -40,6 +40,10 @@
             exit;
         }
     }
+
+    $accountDetails = $pdo->query("SELECT * FROM users WHERE username ='" . $_COOKIE['login'] . "'");
+    $accountDetails->execute();
+    $row = $accountDetails->fetch();
 ?>
 
 <?php

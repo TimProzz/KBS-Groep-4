@@ -1,6 +1,47 @@
 <div class="container product push-padding">
-    <h1>Afrekenen</h1>
+    <form action="pay.php" class="formGoToCheckout">
+        <input type="submit" value="Betalen" class="btn btn-outline-success full-button" />
+    </form>
+    <h1>Afrekenen</h1><hr>
     
+    <?php
+        if(userLoggedIn()) {
+            ?>
+            <div class="overzicht-bestellen">
+                <h2>Bestelling versturen naar:</h2><br>
+                <div class="overzicht-bestellen flex-fix">
+                    <div class="single-overzicht">
+                        <h3>Gegevens</h3>
+                        <h4>Factuur- en afleveradres</h4>
+                        <span><?php echo $row["voornaam"]; if(!empty($row["tussenvoegsels"])) { echo " " . $row["tussenvoegsels"]; } echo " " . $row["achternaam"]; ?></span><br>
+                        <span><?php echo $row["straat"] . " " . $row["huisnummer"]; ?></span><br>
+                        <span><?php echo $row["postcode"] . ", " . $row["woonplaats"]; ?></span><br><br>
+                        <h4>Contactgegevens</h4>
+                        <span><?php echo $row["email"];?></span><br>
+                        <?php if(!empty($row["telefoonnummer"])) { ?><span><?php echo $row["telefoonnummer"]; ?></span><br><?php } ?>
+                        <a href="account.php">Gegevens wijzigen</a>
+                    </div>
+                    <div class="single-overzicht">
+                        <h3>Betaalwijze</h3>
+                        <h4>Betaalmethode</h4>
+                        <span>iDeal</span>
+                    </div>
+                    <div class="single-overzicht">
+                        <h3>Bezorging</h3>
+                        <h4>Bezorgdatum</h4>
+                        <?php
+                            $datetime = new DateTime('+1 day');
+                            ?><span><?php $date = $datetime->format('d-m-Y'); echo getDutchDayFromDate($date) . " " . $date; ?></span><?php
+                        ?>
+                    </div>
+                </div>
+            </div>
+            <?php
+        }
+    ?>
+    
+    <hr>
+    <h2>Mijn bestelling</h2>
     <table class="table table-bordered tableCart">
         <thead>
             <tr>
@@ -48,11 +89,8 @@
               </tfoot>";
         ?>
     </table>
-    <?php
-        if(userLoggedIn()) {
-            ?>
-    
-            <?php
-        }
-    ?>
+    <a href="winkelmand.php">Winkelmand aanpassen</a>
+    <form action="pay.php" class="formGoToCheckout">
+        <input type="submit" value="Betalen" class="btn btn-outline-success full-button" />
+    </form>
 </div>
