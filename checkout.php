@@ -44,7 +44,7 @@
         $row = $accountDetails->fetch();
     }
 
-    if(isset($_POST["pay"])) {
+    if(isset($_POST["pay"]) && isset($_COOKIE["winkelmand"]) && $_COOKIE["winkelmand"] != '{"listW":[]}') {
         if(!isset($_POST["paymentmethod"])) {
             $errorMessage = "Selecteer een betaald methode!";
         } else {
@@ -105,6 +105,8 @@
             header("Location: pay.php?success=Je hebt succesvol betaald! Je bestelling word klaar gemaakt!");
             exit;
         }
+    } else {
+        $errorMessage = "Het winkelmandje mag niet leeg zijn!";
     }
 ?>
 

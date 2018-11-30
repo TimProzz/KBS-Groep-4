@@ -99,6 +99,7 @@
             </thead>
             <?php
                 $totaalPrijs = 0;
+                $count = 0;
                 if (isset($_COOKIE["winkelmand"])) {
                     $theCart = json_decode($_COOKIE["winkelmand"]);
                     ?>
