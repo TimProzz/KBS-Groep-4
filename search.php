@@ -6,10 +6,13 @@ $views = "views/index.php";
 
 <?php
 
-$search = str_replace(" ", "%", $_GET["search"]);
+if(isset($_GET["search"])) {
+    $search = str_replace(" ", "%", $_GET["search"]);
 
-$stockItems = $pdo->query("SELECT * FROM StockItems
+    $stockItems = $pdo->query("SELECT * FROM StockItems
             WHERE StockItemName LIKE '%" . $search . "%'");
+}
+
 ?>
 
 

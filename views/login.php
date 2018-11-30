@@ -5,7 +5,7 @@
     <form action="login.php" method="post">
         <div class="form-group">
             <label for="Username">Gebruikersnaam</label>
-            <input type="Text" name="username "class="form-control" id="Username" placeholder="Gebruikersnaam" required>
+            <input type="Text" name="username" class="form-control" id="Username" placeholder="Gebruikersnaam" required>
         </div>
         <div class="form-group">
             <label for="Password">Wachtwoord</label>

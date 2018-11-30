@@ -40,7 +40,8 @@ if (isset($_POST["changeNAW"])) {
         $query->bindValue(':telefoonnummer', $telefoonnummer);
         $query->execute();
 
-        $changeSuccessful = "You've successfully changed your NAW details!";
+        header("Location: account.php?success=You've successfully changed your NAW details!");
+        exit;
     } catch (Exception $e) {
         echo "Failed to change user details: " . $e->getMessage();
     }
@@ -82,7 +83,8 @@ if (isset($_POST["changePW"])) {
             $query->bindValue(':password', $hashedPassword);
             $query->execute();
 
-            $changeSuccessful = "You've successfully changed your password! On your next login, use your new password!";
+            header("Location: account.php?success=You've successfully changed your password! On your next login, use your new password!");
+            exit;
         } catch (Exception $e) {
             echo "Failed to change password: " . $e->getMessage();
         }

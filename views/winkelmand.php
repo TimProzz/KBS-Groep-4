@@ -27,7 +27,7 @@
                             $singleCartItem = $pdo->query("SELECT * FROM StockItems S JOIN stockitemstockgroups SG ON S.StockItemID = SG.StockItemID JOIN stockgroups G ON SG.StockGroupID = G.StockGroupID WHERE S.StockItemID = " . $theCart->listW[$key]->productid . " GROUP BY S.StockItemID");
                             while ($theCartItem = $singleCartItem->fetch()) {
                                 echo "<tr class='fullProductRow' data-id='". $theCartItem["StockItemID"] ."'><td> <a href='product.php?id=" . $theCartItem["StockItemID"] . "'>" . $theCartItem["StockItemName"] . "</a></td>";
-                                echo "<td> " ?><input type="number" name="hoeveel" min="0" placeholder="<?php echo getCartTotal($theCartItem["StockItemID"]); ?>" value="<?php echo getCartTotal($theCartItem["StockItemID"]); ?>" class="numberWinkelmand numberWinkelmand<?php echo $theCartItem["StockItemID"]; ?>"><input type="submit" name="submitWinkelmand" class="submitWinkelmand" data-id="<?php echo $theCartItem["StockItemID"]; ?>"><?php "<br />";
+                                echo "<td> " ?><input type="number" name="hoeveel" min="0" placeholder="<?php echo getCartTotal($theCartItem["StockItemID"]); ?>" value="<?php echo getCartTotal($theCartItem["StockItemID"]); ?>" class="numberWinkelmand numberWinkelmand<?php echo $theCartItem["StockItemID"]; ?>"><input type="submit" name="submitWinkelmand" class="submitWinkelmand" value="Aanpassen" data-id="<?php echo $theCartItem["StockItemID"]; ?>"><?php "<br />";
                                 //echo "<td> " . $theCart->listW[$key]->hoeveel . "<br />";
                                 echo "<td> &euro;" . number_format($theCartItem["RecommendedRetailPrice"], 2) . "</td>";
                                 $price = $theCartItem["RecommendedRetailPrice"] * $theCart->listW[$key]->hoeveel;
@@ -54,4 +54,7 @@
               </tfoot>";
         ?>
     </table>
+    <form action="checkout.php" class="formGoToCheckout">
+        <input type="submit" value="Afrekenen" class="btn btn-outline-success" />
+    </form>
 </div>

@@ -1,7 +1,6 @@
 <?php
-
-include_once "package.inc.php";
-$views = "views/login.php";
+    include_once "package.inc.php";
+    $views = "views/login.php";
 ?>
 
 <?php
@@ -11,12 +10,9 @@ if (userLoggedIn()) {
     exit;
 }
 
-$errorMessages = array();
-
 if (isset($_POST["login"])) {
     $username = $_POST["username"];
     $password = $_POST["password"];
-
     $hashedPassword = hashedPassword512($username, $password);
 
     $query = $pdo->prepare("SELECT COUNT(*) FROM users WHERE username = :username AND password = :password");
@@ -30,12 +26,12 @@ if (isset($_POST["login"])) {
         header("Location: index.php?success=You've successfully logged in!");
         exit;
     } else {
-        array_push($errorMessages, "Invalid login details. Please try again!");
+        header("Location: login.php?error=Invalid login details. Please try again!");
+        exit;
     }
 }
 ?>
 
 <?php
-
-include $template;
+    include $template;
 ?>

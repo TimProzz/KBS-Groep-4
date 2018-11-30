@@ -1,3 +1,8 @@
+<?php
+    $postNumber = 1;
+    $postRowDiv = 1;
+?>
+
 <div class="container push-padding">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
@@ -10,56 +15,50 @@
     <?php
         sortProducts();
     ?>
-    <table class="table table-bordered tableHistory tableHistory1">
-        <tr>
-            <th><b>Nummer:</b></th>
-            <th><b>Naam:</b></th>
-            <th><b>Aantal:</b></th>
-            <th><b>Voeg toe aan winkelmand:</b></th>
-        </tr>
+    <div class="row"> 
+        <div class="tableHistory tableHistory1">
         <?php
-        $i = 1;
-        $countRows = 0;
-        while ($singleStockItem = $stockItems->fetch()) {
-            $postNumber++;
-            $countRows++;
-            if ($postNumber > 20) {
-                $postNumber = 1;
-                $postRowDiv++;
+            $i = 1;
+            $countRows = 0;
+            while ($row = $stockItems->fetch()) {
                 ?>
-            </table>
-            <table class="table table-bordered tableHistory tableHistory<?php echo $postRowDiv; ?>">
-                <tr>
-                    <th><b>Nummer:</b></th>
-                    <th><b>Naam:</b></th>
-                    <th><b>Aantal:</b></th>
-                    <th><b>Voeg toe aan winkelmand:</b></th>
-                </tr>
+                    <div class='col col-md-3 artikel'> 
+                        <div class='card'>
+                            <div class="card-image">
+                                <img style="max-heigth: 250px; " class="card-img-top" src="<?php if(!empty($row["imageName"])) { echo 'uploads/' . $row["imageName"]; } else { echo 'https://via.placeholder.com/250'; } ?>" alt="Card image cap">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title"><a href="product.php?id=<?php echo $row['StockItemID']; ?>"><?php echo $row["StockItemName"]?></a></h5>
+                              <p class="card-text"><?php echo $row["MarketingComments"]?></p>
+                              <h6 class="price">&euro;<?php echo $row["RecommendedRetailPrice"]?></h6>
+                              <!--<a href="#" class="btn btn-primary wagen">In winkelwagen</a>-->
+                            </div>
+                        </div>
+                    </div>
                 <?php
+                $postNumber++;
+                $countRows++;
+                if ($postNumber > 20) {
+                    $postNumber = 1;
+                    $postRowDiv++;
+                    ?>
+                    </div>
+                    <div class="tableHistory tableHistory<?php echo $postRowDiv; ?>"><?php
+                }
             }
-            $stockCount = $stockItems->rowCount();
-            ?>
-            <tr>
-                <th><strong><?php echo $singleStockItem["StockItemID"]; ?></strong></th>
-                <th><a href="product.php?id=<?php echo $singleStockItem["StockItemID"]; ?>"><?php echo $singleStockItem["StockItemName"]; ?></a></th>
-                <th><input type="number" name="hoeveel" min="0" placeholder="<?php echo getCartTotal($singleStockItem["StockItemID"]); ?>" value="<?php echo getCartTotal($singleStockItem["StockItemID"]); ?>" class="numberWinkelmand numberWinkelmand<?php echo $singleStockItem["StockItemID"]; ?>"></th>
-                <th><input type="submit" name="submitWinkelmand" class="submitWinkelmand" data-id="<?php echo $singleStockItem["StockItemID"]; ?>"></th>
-            </tr>
-            <?php
-        }
         ?>
-    </table>
-    <div class="pageSelect">
-        <button class="buttonPageSelect buttonPrev" id="prevButton">Previous</button>
-        <div class="pageSelectInner">
-            <?php
-            for ($i = 1; $i <= $postRowDiv; $i++) {
-                ?><a class="linkReactPage reactionPageNumber<?php echo $i; if($i == 1) { echo ' pageSelected'; } ?>" id="tableHistory<?php echo $i; ?>"><?php echo $i; ?></a><?php
-            }
-            ?>
         </div>
-        <button class="buttonPageSelect buttonNext" id="nextButton">Next</button>
+        <div class="pageSelect">
+            <button class="buttonPageSelect buttonPrev" id="prevButton">Previous</button>
+            <div class="pageSelectInner">
+                <?php
+                for ($i = 1; $i <= $postRowDiv; $i++) {
+                    ?><a class="linkReactPage reactionPageNumber<?php echo $i; if($i == 1) { echo ' pageSelected'; } ?>" id="tableHistory<?php echo $i; ?>"><?php echo $i; ?></a><?php
+                }
+                ?>
+            </div>
+            <button class="buttonPageSelect buttonNext" id="nextButton">Next</button>
+        </div>
     </div>
-    <br>
 
 </div>

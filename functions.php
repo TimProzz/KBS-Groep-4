@@ -63,4 +63,47 @@
             </div>
         <?php
     }
+    
+    function getYoutubeEmbedUrl($url){
+        $shortUrlRegex = '/youtu.be\/([a-zA-Z0-9_]+)\??/i';
+        $longUrlRegex = '/youtube.com\/((?:embed)|(?:watch))((?:\?v\=)|(?:\/))(\w+)/i';
+
+        if (preg_match($longUrlRegex, $url, $matches)) {
+            $youtube_id = $matches[count($matches) - 1];
+        }
+
+        if (preg_match($shortUrlRegex, $url, $matches)) {
+            $youtube_id = $matches[count($matches) - 1];
+        }
+        return 'https://www.youtube.com/embed/' . $youtube_id ;
+    }
+
+    function getDutchDayFromDate($date) {
+        switch(date('D', strtotime($date))) {
+            case "Mon":
+                return "Maandag";
+                break;
+            case "Tue":
+                return "Dinsdag";
+                break;
+            case "Wed":
+                return "Woensdag";
+                break;
+            case "Thu":
+                return "Donderdag";
+                break;
+            case "Fri":
+                return "Vrijdag";
+                break;
+            case "Sat":
+                return "Zaterdag";
+                break;
+            case "Sun":
+                return "Zondag";
+                break;
+            default:
+                return "UNDEFINED Datum?";
+        }
+    }
+
 ?>
