@@ -6,7 +6,7 @@ $views = "views/register.php";
 
 <?php
 
-if (userLoggedIn()) {
+if(userLoggedIn()) {
     header("Location: index.php?error=You're already logged in!");
     exit;
 }
@@ -20,11 +20,11 @@ if (isset($_POST["register"])) {
     $email = $_POST["email"];
     $surname = $_POST["surname"];
     $infix = $_POST["infix"];
-    $last_name = $_POST["last name"];
+    $last_name = $_POST["last_name"];
     $street = $_POST["street"];
     $housenumber = $_POST["housenumber"];
     $city = $_POST["city"];
-    $postal_code = $_POST["postal code"];
+    $postal_code = $_POST["postal_code"];
     $phonenumber = $_POST["phonenumber"];
 
     if ($password != $passwordCheck) {
@@ -39,8 +39,8 @@ if (isset($_POST["register"])) {
         array_push($errorMessages, "Username needs to be at least 6 characters!");
     }
 
-    if(filter_var($email, FILTER_VALIDATE_EMAIL)){
-      array_push($errorMessages, "Emailadres is niet geldig!");
+    if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+        array_push($errorMessages, "Emailadres is niet geldig!");
     }
 
     $usernameIsSet = checkIfUsernameExists($username, $pdo);
@@ -69,7 +69,7 @@ if (isset($_POST["register"])) {
             $query->bindValue(':rechten', $rechten);
             $query->execute();
 
-            header("Location: register.php?error=You've successfully registered yourself. You can now <a href='login.php'>login</a> using your details!");
+            header("Location: register.php?success=You've successfully registered yourself. You can now <a href='login.php'>login</a> using your details!");
             exit;
         } catch (Exception $e) {
             echo "Failed to register new user: " . $e->getMessage();
