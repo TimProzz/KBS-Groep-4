@@ -63,9 +63,5 @@
         echo $value . "<br />";
       }
     }
-
-    if (isset($registerSuccessful)) {
-      echo $registerSuccessful;
-    }
     ?>
   </div>
