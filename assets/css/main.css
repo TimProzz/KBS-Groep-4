@@ -10,25 +10,6 @@ body{
 .tableHistory {
     width: 100%;
     font-weight: normal !important;
-    background: grey;
-}
-
-.tableHistory tr:nth-child(even) {
-    background: rgb(255, 255, 255);
-}
-
-.tableHistory tr:nth-child(odd) {
-    background: rgb(230, 230, 230);
-}
-
-.tableHistory th {
-    height: 40px;
-    padding: 5px 0;
-}
-
-.tableHistory img {
-    max-width: 400px;
-    max-height: 300px;
 }
 
 .tableHistory {
@@ -61,6 +42,8 @@ body{
     font-size: 14px;
     margin-top: -10px;
     background: #fff;
+    margin: 0 auto;
+    padding-bottom: 30px;
 }
 
 .productInfo {
@@ -219,4 +202,278 @@ body{
 .pageSelected {
     background: #007bff;
     color: #fff!important;
+}
+
+
+
+
+
+.product{
+    color: black;
+    font-size: 15px;
+    }
+    .artikel{
+        padding: 50px 20px;
+        float: left;
+    }
+    
+    .btn-outline-success{
+        background: #00bcf2;
+        border-color: #818182;
+        color: white;
+    }
+    
+    .btn-outline-success:hover{
+        background: #007bff;
+        border-color: #818182;
+        
+    }
+    
+    .card-text{
+        height: 60px;
+    }
+    
+    .card-title{
+        height: 50px
+    }
+    
+    .wagen{
+        background-color: #00bcf2;
+        border-color: #818182;
+/*        border-radius: 0;*/
+       
+    }
+    
+    * {box-sizing:border-box}
+
+    .img {
+        height: 300px;
+        width: 100%;
+   
+    }
+    
+    .btn-group{
+        max-width: 1140px;
+        border-radius: 0;
+        overflow: hidden;
+    }
+    
+    .btn-group>button{
+        width: 130px;
+        border-radius: 0;
+        color: #818182;
+        background-color: #eee;
+        border-color: lightgrey;
+    }
+    
+    .btn-group>button:hover {
+    background-color: #eee;
+    color: #00bcf2;
+    border-color: lightgrey;
+    
+}
+/* Slideshow container */
+.slideshow-container {
+  height: 300px;
+  position: relative;
+  margin: auto;
+  max-width: 1140px;
+}
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+  
+}
+
+.price{
+    position: absolute;
+    bottom: 16px;
+    right: 20px;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+.card-image {
+    max-height: 250px;
+    overflow: hidden;
+}
+
+.formGoToCheckout {
+    float: right;
+}
+
+.card-supply {
+    color: black;
+}
+
+.SupplyLow {
+    color: red;
+}
+
+.SupplyHigh {
+    color: green;
+}
+
+.noJavascript {
+    width: 70%;
+    position: fixed;
+    bottom: 0;
+    padding: 20px 0;
+    text-align: center;
+    z-index: 999999;
+    left: calc(-50vw + 50%);
+    right: calc(-50vw + 50%);
+    margin-left: auto;
+    margin-right: auto;
+    transition: all 1s ease 0s;
+}
+
+.errorMessageColorRed {
+    background: #f48181;
+    color: #fff;
+    border: 1px solid #dc3232;
+    border-radius: 5px;
+}
+
+.errorMessageColorGreen {
+    background: #7AED61;
+    color: #fff;
+    border: 1px solid #44a03d;
+    border-radius: 5px;
+}
+
+.borderColorGreen {
+    color: #44a03d;
+}
+
+.borderColorRed {
+    color: #dc3232;
+}
+
+.kruisje {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px;
+}
+
+.noJavascript a {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.noJavascript a:hover {
+    color: #f2f2f2;
+}
+
+.kruisje:hover {
+    cursor: pointer;
+}
+
+.buttons-slider {
+    width: 100%;
+    max-width: 100%;
+}
+
+.button-slider {
+    margin-left: 0px!important;
+}
+
+.requiredField {
+    color: #ff0000;
+    margin-left: 2px;
+}
+
+.overzicht-bestellen {
+    width: 100%;
+    overflow: hidden;
+}
+
+.single-overzicht {
+    width: 33.33%;
+    float: left;
+    border-left: 1px solid #dee2e6;
+    padding: 0 0 0 10px;
+}
+
+.single-overzicht:first-child {
+    border-left: none;
+    padding: 0;
+}
+
+.flex-fix {
+    display: flex;
+}
+
+.full-button {
+    color: #fff!important;
+    background-color: #28a745!important;
 }
