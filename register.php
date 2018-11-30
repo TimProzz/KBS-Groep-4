@@ -17,6 +17,15 @@ if (isset($_POST["register"])) {
     $username = $_POST["username"];
     $password = $_POST["password"];
     $passwordCheck = $_POST["passwordCheck"];
+    $email = $_POST["email"];
+    $surname = $_POST["surname"];
+    $infix = $_POST["infix"];
+    $last_name = $_POST["last name"];
+    $street = $_POST["street"];
+    $housenumber = $_POST["housenumber"];
+    $city = $_POST["city"];
+    $postal_code = $_POST["postal code"];
+    $phonenumber = $_POST["phonenumber"];
 
     if ($password != $passwordCheck) {
         array_push($errorMessages, "Passwords are not the same!");
@@ -30,6 +39,10 @@ if (isset($_POST["register"])) {
         array_push($errorMessages, "Username needs to be at least 6 characters!");
     }
 
+    if(filter_var($email, FILTER_VALIDATE_EMAIL)){
+      array_push($errorMessages, "Emailadres is niet geldig!");
+    }
+
     $usernameIsSet = checkIfUsernameExists($username, $pdo);
 
     if ($usernameIsSet == 1) {
@@ -41,9 +54,18 @@ if (isset($_POST["register"])) {
         $rechten = 4;
 
         try {
-            $query = $pdo->prepare("INSERT INTO users (username, password, rechten) VALUES (:username, :password, :rechten)");
+            $query = $pdo->prepare("INSERT INTO users (username, password, email, voornaam, tussenvoegsels, achternaam, straat, huisnummer, woonplaats, postcode, telefoonnummer, rechten) VALUES (:username, :password, :email, :voornaam, :tussenvoegsels, :achternaam, :straat, :huisnummer, :woonplaats, :postcode, :telefoonnummer, :rechten)");
             $query->bindValue(':username', $username);
             $query->bindValue(':password', $hashedPassword);
+            $query->bindValue(':email', $email);
+            $query->bindValue(':voornaam', $surname);
+            $query->bindValue(':tussenvoegsels', $infix);
+            $query->bindValue(':achternaam', $last_name);
+            $query->bindValue(':straat', $street);
+            $query->bindValue(':huisnummer', $housenumber);
+            $query->bindValue(':woonplaats', $city);
+            $query->bindValue(':postcode', $postal_code);
+            $query->bindValue(':telefoonnummer', $phonenumber);
             $query->bindValue(':rechten', $rechten);
             $query->execute();
 
