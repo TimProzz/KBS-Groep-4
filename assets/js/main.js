@@ -95,6 +95,18 @@ $(document).ready(function() {
         changePageNumber(currentPageNumber, clickedButtonID);
     });
     
+    $(".singleAccountControl").on("click", function() {
+        var clickedControl = $(this).attr("data-change");
+        $(".singleAccountControl").each(function() {
+            $(".singleAccountControl").removeClass("singleAccountControlActive");
+        });
+        $(this).addClass("singleAccountControlActive");
+        $(".singleAccountTab").each(function() {
+            $(this).addClass("accountContainerHidden"); 
+        });
+        $("." + clickedControl).removeClass("accountContainerHidden");
+    });
+    
     var removeAttributesPageSelect = function() {
         for(var i = 1; i <= pageCount; i++) {
             var classNameToChange = ".tableHistory" + i;

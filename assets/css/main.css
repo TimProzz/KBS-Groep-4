@@ -152,7 +152,7 @@ body{
 }
 
 .push-padding {
-    padding-top: 30px;
+    padding: 30px 0 50px;
 }
 
 .search-form-style {
@@ -477,4 +477,54 @@ body{
     float: right;
     color: #fff!important;
     background-color: #28a745!important;
+}
+
+.accountControls {
+    width: 100%;
+    overflow: hidden;
+    border: 1px solid #d6d6d6;
+    border-radius: 5px;
+}
+
+.singleAccountControl {
+    float: left;
+    text-align: center;
+    padding: 10px 0;
+    border-left: 1px solid #d6d6d6;
+    font-weight: normal;
+}
+
+.singleAccountControl:hover {
+    cursor: pointer;
+}
+
+.singleAccountControl:first-child {
+    border-left: none;
+}
+
+.singleAccountControlActive {
+    background: #00BCF2;
+    color: #fff;
+    font-weight: bold;
+}
+
+.accountContainerHidden {
+    display: none;
+}
+
+.order {
+    border: 1px solid #d6d6d6;
+    border-radius: 5px;
+}
+
+.orderTop {
+    border-bottom: 1px solid #d6d6d6;
+    padding: 5px 10px;
+    background: #00BCF2;
+    color: #fff;
+    font-weight: bold;
+}
+
+.orderBottom {
+    padding: 5px 10px;
 }

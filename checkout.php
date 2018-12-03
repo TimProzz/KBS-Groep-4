@@ -106,7 +106,7 @@
             exit;
         }
     } else {
-        $errorMessage = "Het winkelmandje mag niet leeg zijn!";
+        //$errorMessage = "Het winkelmandje mag niet leeg zijn!";
     }
 ?>
 
