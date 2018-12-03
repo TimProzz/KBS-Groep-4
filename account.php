@@ -16,7 +16,7 @@ $errorMessages = array();
 $accountDetails = $pdo->prepare("SELECT * FROM users WHERE username = '" . $_COOKIE['login'] . "'");
 $accountDetails->execute();
 $row = $accountDetails->fetch();
-$userOrders = $pdo->query("SELECT * FROM get_order WHERE customerID = '" . $row["id"] . "'");
+$userOrders = $pdo->query("SELECT * FROM get_order WHERE customerID = '" . $row["id"] . "' ORDER BY id DESC");
 
 if (isset($_POST["changeNAW"])) {
     $email = $_POST["email"];

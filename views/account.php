@@ -54,7 +54,7 @@
                     Telefoonnummer:<br><input type="number" name="telefoonnummer" placeholder="Telefoonnummer" value="<?php if (!empty($row['telefoonnummer'])) {
                 echo $row['telefoonnummer'];
             } ?>"><br><br>
-                    <input type="submit" value="Submit" name="changeNAW">
+                    <input type="submit" value="Wijzigen" name="changeNAW">
                 </form>
             <?php
         }
@@ -74,19 +74,61 @@
                     $orderDatum = $orderResult["date"];
                     ?>
                     <div class="order">
-                        <div class="orderTop"><?php echo $orderResult["date"]; ?><br><?php echo "Ordernummer: " . $orderNumber; ?></div>
-                        <div class="orderBottom">
-                            <?php
-                            foreach($singleOrder->listW as $key => $value) {
-                                if ($singleOrder->listW[$key]->active == 1) {
-                                    $singleOrderedProduct = $pdo->query("SELECT * FROM StockItems S JOIN stockitemstockgroups SG ON S.StockItemID = SG.StockItemID JOIN stockgroups G ON SG.StockGroupID = G.StockGroupID WHERE S.StockItemID = " . $singleOrder->listW[$key]->productid . " GROUP BY S.StockItemID");
-                                    while ($theOrderedProduct = $singleOrderedProduct->fetch()) {
-                                        echo $singleOrder->listW[$key]->hoeveel; ?> x <a href="product.php?id=<?php echo $theOrderedProduct["StockItemID"]; ?>"><?php echo $theOrderedProduct["StockItemName"]; ?></a><br><?php
+                        <div class="orderTop" data-id="orderMiddle<?php echo $orderNumber; ?>">
+                            <span><?php echo $orderResult["date"]; ?><br><?php echo "Ordernummer: " . $orderNumber; ?></span>
+                            <span class="orderArrowDown" id="orderMiddle<?php echo $orderNumber; ?>Arrow"><i class="fa fa-angle-double-down" aria-hidden="true"></i></span>
+                        </div>
+                        <div class="orderContent" id="orderMiddle<?php echo $orderNumber; ?>">
+                            <div class="orderMiddle">
+                                <div class="floatContainer" style="width: 50%;">
+                                    <h5>Naam product:</h5>
+                                    <?php
+                                    $priceTotalOfOrder = 0;
+                                    foreach($singleOrder->listW as $key => $value) {
+                                        if ($singleOrder->listW[$key]->active == 1) {
+                                            $singleOrderedProduct = $pdo->query("SELECT * FROM StockItems S JOIN stockitemstockgroups SG ON S.StockItemID = SG.StockItemID JOIN stockgroups G ON SG.StockGroupID = G.StockGroupID WHERE S.StockItemID = " . $singleOrder->listW[$key]->productid . " GROUP BY S.StockItemID");
+                                            while($theOrderedProduct = $singleOrderedProduct->fetch()) {
+                                                echo $singleOrder->listW[$key]->hoeveel; ?> x <a href="product.php?id=<?php echo $theOrderedProduct["StockItemID"]; ?>"><?php echo $theOrderedProduct["StockItemName"]; ?></a><br><?php
+                                            }
+                                        }
+                                        $count++;
                                     }
-                                }
-                                $count++;
-                            }
-                            ?>
+                                    ?>
+                                </div>
+                                <div class="floatContainer" style="width: 25%;">
+                                    <h5>Prijs per product:</h5>
+                                    <?php
+                                    foreach($singleOrder->listW as $key => $value) {
+                                        if ($singleOrder->listW[$key]->active == 1) {
+                                            $singleOrderedProduct = $pdo->query("SELECT * FROM StockItems S JOIN stockitemstockgroups SG ON S.StockItemID = SG.StockItemID JOIN stockgroups G ON SG.StockGroupID = G.StockGroupID WHERE S.StockItemID = " . $singleOrder->listW[$key]->productid . " GROUP BY S.StockItemID");
+                                            while($theOrderedProduct = $singleOrderedProduct->fetch()) {
+                                                echo "&euro;" . $theOrderedProduct["RecommendedRetailPrice"]. "<br>";
+                                            }
+                                        }
+                                        $count++;
+                                    }
+                                    ?>
+                                </div>
+                                <div class="floatContainer" style="width: 25%;">
+                                    <h5>Totaal:</h5>
+                                    <?php
+                                    foreach($singleOrder->listW as $key => $value) {
+                                        if ($singleOrder->listW[$key]->active == 1) {
+                                            $singleOrderedProduct = $pdo->query("SELECT * FROM StockItems S JOIN stockitemstockgroups SG ON S.StockItemID = SG.StockItemID JOIN stockgroups G ON SG.StockGroupID = G.StockGroupID WHERE S.StockItemID = " . $singleOrder->listW[$key]->productid . " GROUP BY S.StockItemID");
+                                            while($theOrderedProduct = $singleOrderedProduct->fetch()) {
+                                                $priceProductsTotal = $singleOrder->listW[$key]->hoeveel * $theOrderedProduct["RecommendedRetailPrice"];
+                                                echo "&euro;" . number_format($priceProductsTotal, 2) . "<br>";
+                                                $priceTotalOfOrder += $priceProductsTotal;
+                                            }
+                                        }
+                                        $count++;
+                                    }
+                                    ?>
+                                </div>
+                            </div>
+                            <div class="orderBottom">
+                                <strong>Totaal: </strong><?php echo "&euro;" . number_format($priceTotalOfOrder, 2); ?>
+                            </div>
                         </div>
                     </div><br>
                     <?php
@@ -98,10 +140,10 @@
     <div class="singleAccountTab wachtwoordWijzigen accountContainerHidden">
         <h3>Wachtwoord wijzigen</h3>
         <form action="account.php" method="post">
-            Oud wachtwoord:<br><input type="password" name="oldPassword" placeholder="Old password" required><br>
-            Nieuw wachtwoord:<br><input type="password" name="newPassword" placeholder="New password" required><br>
-            Nieuw wachtwoord opnieuw:<br><input type="password" name="newPasswordAgain" placeholder="New password opnieuw" required><br><br>
-            <input type="submit" value="Submit" name="changePW">
+            Oud wachtwoord:<br><input type="password" name="oldPassword" placeholder="Oud wachtwoord" required><br>
+            Nieuw wachtwoord:<br><input type="password" name="newPassword" placeholder="Nieuw wachtwoord" required><br>
+            Nieuw wachtwoord opnieuw:<br><input type="password" name="newPasswordAgain" placeholder="Nieuw wachtwoord opnieuw" required><br><br>
+            <input type="submit" value="Wijzigen" name="changePW">
         </form>
     </div>
 </div>

@@ -1,5 +1,6 @@
 body{
     background-color: #e9ecef!important;
+    overflow-y: scroll;
 }
 
 .container{
@@ -482,7 +483,7 @@ body{
 .accountControls {
     width: 100%;
     overflow: hidden;
-    border: 1px solid #d6d6d6;
+    border: 0.8px solid #d6d6d6;
     border-radius: 5px;
 }
 
@@ -513,7 +514,7 @@ body{
 }
 
 .order {
-    border: 1px solid #d6d6d6;
+    border: 0.8px solid #d6d6d6;
     border-radius: 5px;
 }
 
@@ -523,8 +524,42 @@ body{
     background: #00BCF2;
     color: #fff;
     font-weight: bold;
+    overflow: hidden;
+}
+
+.orderTop:hover {
+    cursor: pointer;
+}
+
+.orderArrowTopRotate {
+    transform:rotate(180deg);
+    -ms-transform:rotate(180deg);
+    -webkit-transform:rotate(180deg);
+}
+
+.orderMiddle {
+    padding: 5px 10px;
+    overflow: hidden;
 }
 
 .orderBottom {
     padding: 5px 10px;
+    border-top: 1px solid #d6d6d6;
+}
+
+.floatContainer {
+    float: left;
+}
+
+.orderContent {
+    display: none;
+}
+
+.orderArrowDown {
+    float: right;
+    font-size: 40px;
+    margin-top: -20px;
+    -webkit-transition: -webkit-transform .5s ease-in-out;
+    -ms-transition: -ms-transform .5s ease-in-out;
+    transition: transform .5s ease-in-out; 
 }

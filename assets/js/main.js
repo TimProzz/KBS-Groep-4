@@ -107,6 +107,12 @@ $(document).ready(function() {
         $("." + clickedControl).removeClass("accountContainerHidden");
     });
     
+    $(".orderTop").on("click", function() {
+        var idNameToChange = $(this).attr("data-id");
+        $("#" + idNameToChange).slideToggle("slow");
+        $("#" + idNameToChange + "Arrow").toggleClass("orderArrowTopRotate");
+    });
+    
     var removeAttributesPageSelect = function() {
         for(var i = 1; i <= pageCount; i++) {
             var classNameToChange = ".tableHistory" + i;
