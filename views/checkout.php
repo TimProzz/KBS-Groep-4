@@ -1,6 +1,6 @@
 <div class="container product push-padding">
     <form method="post" action="checkout.php">
-        <input type="submit" value="Betalen" class="btn btn-outline-success full-button" />
+        <input type="submit" name="pay" value="Betalen" class="btn btn-outline-success full-button" />
 
         <h1>Afrekenen</h1><hr>
         <?php
@@ -50,20 +50,20 @@
                             <div class="single-overzicht">
                                 <h3>Gegevens</h3>
                                 <h4>Factuur- en afleveradres</h4>
-
-                                    <div class="form-group">Email: *<input class="form-control" type="text" name="email" placeholder="Email" value="<?php if(isset($_POST['email'])) { echo $_POST['email']; } ?>" required></div>
-                                    <div class="form-group">Voornaam: *<input class="form-control" type="text" name="voornaam" placeholder="Voornaam" value="<?php if(isset($_POST['voornaam'])) { echo $_POST['voornaam']; } ?>" required></div>
-                                    <div class="form-group">Tussenvoegsels:<input class="form-control" type="text" name="tussenvoegsels" placeholder="Tussenvoegsels" value="<?php if(isset($_POST['tussenvoegsels'])) { echo $_POST['tussenvoegsels']; } ?>" required></div>
-                                    <div class="form-group">Achternaam: *<input class="form-control" type="text" name="achternaam" placeholder="Achternaam" value="<?php if(isset($_POST['achternaam'])) { echo $_POST['achternaam']; } ?>" required></div>
-                                    <div class="form-row">
-                                        <div class="form-group col-md-7">Straat: *<input class="form-control" type="text" name="straat" placeholder="Straat" value="<?php if(isset($_POST['straat'])) { echo $_POST['straat']; } ?>" required></div>
-                                        <div class="form-group col-md-5">Huisnummer: *<input class="form-control" type="text" name="huisnummer" placeholder="Huisnummer" value="<?php if(isset($_POST['huisnummer'])) { echo $_POST['huisnummer']; } ?>" required></div>
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="form-group col-md-7">Woonplaats: *<input class="form-control" type="text" name="woonplaats" placeholder="Woonplaats" value="<?php if(isset($_POST['woonplaats'])) { echo $_POST['woonplaats']; } ?>" required></div>
-                                        <div class="form-group col-md-5">Postcode: *<input class="form-control" type="text" name="postcode" placeholder="Postcode" value="<?php if(isset($_POST['postcode'])) { echo $_POST['postcode']; } ?>" required></div>
-                                    </div>
-                                    <div class="form-group">Telefoonnummer: <input class="form-control" type="number" name="telefoonnummer" placeholder="Telefoonnummer" value="<?php if(isset($_POST['telefoonnummer'])) { echo $_POST['telefoonnummer']; } ?>" required></div><br>
+                                <div class="form-group">Email: *<input class="form-control" type="text" name="email" placeholder="Email" value="<?php if(isset($_POST['email'])) { echo $_POST['email']; } ?>" required></div>
+                                <div class="form-group">Voornaam: *<input class="form-control" type="text" name="voornaam" placeholder="Voornaam" value="<?php if(isset($_POST['voornaam'])) { echo $_POST['voornaam']; } ?>" required></div>
+                                <div class="form-group">Tussenvoegsels:<input class="form-control" type="text" name="tussenvoegsels" placeholder="Tussenvoegsels" value="<?php if(isset($_POST['tussenvoegsels'])) { echo $_POST['tussenvoegsels']; } ?>" required></div>
+                                <div class="form-group">Achternaam: *<input class="form-control" type="text" name="achternaam" placeholder="Achternaam" value="<?php if(isset($_POST['achternaam'])) { echo $_POST['achternaam']; } ?>" required></div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-7">Straat: *<input class="form-control" type="text" name="straat" placeholder="Straat" value="<?php if(isset($_POST['straat'])) { echo $_POST['straat']; } ?>" required></div>
+                                    <div class="form-group col-md-5">Huisnummer: *<input class="form-control" type="text" name="huisnummer" placeholder="Huisnummer" value="<?php if(isset($_POST['huisnummer'])) { echo $_POST['huisnummer']; } ?>" required></div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-7">Woonplaats: *<input class="form-control" type="text" name="woonplaats" placeholder="Woonplaats" value="<?php if(isset($_POST['woonplaats'])) { echo $_POST['woonplaats']; } ?>" required></div>
+                                    <div class="form-group col-md-5">Postcode: *<input class="form-control" type="text" name="postcode" placeholder="Postcode" value="<?php if(isset($_POST['postcode'])) { echo $_POST['postcode']; } ?>" required></div>
+                                </div>
+                                <div class="form-group">Telefoonnummer: <input class="form-control" type="number" name="telefoonnummer" placeholder="Telefoonnummer" value="<?php if(isset($_POST['telefoonnummer'])) { echo $_POST['telefoonnummer']; } ?>" required></div>
+                                <a href="register.php">Of maak een account</a><br>
 
                             </div>
                             <div class="single-overzicht">
