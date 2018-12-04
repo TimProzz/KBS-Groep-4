@@ -13,8 +13,10 @@ if (!isset($_COOKIE["login"])) {
 
 $errorMessages = array();
 
-
-$accountDetails = $pdo->query("SELECT * FROM users WHERE username ='" . $_COOKIE['login'] . "'");
+$accountDetails = $pdo->prepare("SELECT * FROM users WHERE username = '" . $_COOKIE['login'] . "'");
+$accountDetails->execute();
+$row = $accountDetails->fetch();
+$userOrders = $pdo->query("SELECT * FROM get_order WHERE customerID = '" . $row["id"] . "' ORDER BY id DESC");
 
 if (isset($_POST["changeNAW"])) {
     $email = $_POST["email"];
@@ -53,9 +55,9 @@ if (isset($_POST["changePW"])) {
     $newPwAgain = $_POST["newPasswordAgain"];
     $username = $_COOKIE["login"];
 
-    while ($row = $accountDetails->fetch()) {
-        $passwordDB = $row["password"];
-    }
+    //while ($row = $accountDetails->fetch()) {
+    $passwordDB = $row["password"];
+    //}
 
     $oldHashedPassword = hashedPassword512($username, $oldPW);
 

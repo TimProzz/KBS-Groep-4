@@ -63,12 +63,12 @@
                                 <h5 class="card-title"><a href="product.php?id=<?php echo $row['StockItemID']; ?>"><?php echo $row["StockItemName"]?></a></h5>
                               <p class="card-text"><?php echo $row["MarketingComments"]?></p>
                                <p class="card-supply"><?php 
-                                if($row["QuantityOnHand"] >= 10) { 
+                                if(isset($row["QuantityOnHand"]) && $row["QuantityOnHand"] >= 10) { 
                                     echo "Voorraad: <span class='SupplyHigh'>10+</span>"; 
-                                } elseif ($row["QuantityOnHand"] < 10 && $row["QuantityOnHand"] > 0) {
+                                } elseif (isset($row["QuantityOnHand"]) && $row["QuantityOnHand"] < 10 && $row["QuantityOnHand"] > 0) {
                                     echo "Voorraad: <span class= 'SupplyLow'>" . $row["QuantityOnHand"] . "</span>"; 
 
-                                } elseif($row["QuantityOnHand"] <= 0) { 
+                                } elseif(isset($row["QuantityOnHand"]) && $row["QuantityOnHand"] <= 0) { 
                                     echo "<span class= 'SupplyLow'> Product uitverkocht! </span>"; 
 
                                 } ?>
