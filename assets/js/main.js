@@ -283,9 +283,17 @@ $(document).ready(function() {
         var valueOfSort = $(".sort").val();
         var pathname = window.location.pathname;
         if(getUrlParameter('id') != undefined) {
-            var urlSort = pathname + "?sort=" + valueOfSort + "&id=" + getUrlParameter('id');
+            if(getUrlParameter('search') != undefined) {
+                var urlSort = pathname + "?sort=" + valueOfSort + "&id=" + getUrlParameter('id') + "&search=" + getUrlParameter('search');
+            } else {
+                var urlSort = pathname + "?sort=" + valueOfSort + "&id=" + getUrlParameter('id');
+            }
         } else {
-            var urlSort = pathname + "?sort=" + valueOfSort;
+            if(getUrlParameter('search') != undefined) {
+                var urlSort = pathname + "?sort=" + valueOfSort + "&search=" + getUrlParameter('search');
+            } else {
+                var urlSort = pathname + "?sort=" + valueOfSort;
+            }
         }
         //console.log(urlSort);
         
