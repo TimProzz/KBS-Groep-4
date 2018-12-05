@@ -7,7 +7,7 @@ $views = "views/account.php";
 <?php
 
 if (!isset($_COOKIE["login"])) {
-    header("Location: index.php?error=You need to be logged in to visit this page!");
+    header("Location: index.php?error=Je moet ingelogd zijn om deze pagina te bezoeken!");
     exit;
 }
 
@@ -42,7 +42,7 @@ if (isset($_POST["changeNAW"])) {
         $query->bindValue(':telefoonnummer', $telefoonnummer);
         $query->execute();
 
-        header("Location: account.php?success=You've successfully changed your NAW details!");
+        header("Location: account.php?success=Je hebt je NAW gegevens succesvol veranderd!");
         exit;
     } catch (Exception $e) {
         echo "Failed to change user details: " . $e->getMessage();
@@ -85,7 +85,7 @@ if (isset($_POST["changePW"])) {
             $query->bindValue(':password', $hashedPassword);
             $query->execute();
 
-            header("Location: account.php?success=You've successfully changed your password! On your next login, use your new password!");
+            header("Location: account.php?success=Je hebt je wachtwoord succesvol veranderd! Bij je volgende login, gebruik je nieuwe wachtwoord!");
             exit;
         } catch (Exception $e) {
             echo "Failed to change password: " . $e->getMessage();

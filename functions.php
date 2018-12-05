@@ -35,6 +35,18 @@
         return $usernameIsSet;
     }
 
+    function checkIfEmailExists($email, $pdo) { // Checks if the given email exists in the database table 'users'
+        $emailIsSet = 0;
+        $allEmails = $pdo->query("SELECT email FROM users");
+        $allEmails->execute();
+        while($singleEmail = $allEmails->fetch()) {
+            if($singleEmail["email"] == $email) {
+                $emailIsSet = 1;
+            }
+        }
+        return $emailIsSet;
+    }
+
     function loginUser($username) { // Logs the user in with given username
         setcookie("login", $username, time() + (86400 * 30), "/"); //Set username as login for 30 days
     }
