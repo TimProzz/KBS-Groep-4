@@ -8,6 +8,7 @@
         $stockItems = $pdo->query("SELECT * FROM StockItems S
             JOIN stockitemstockgroups SG ON S.StockItemID = SG.StockItemID
             JOIN stockgroups G ON SG.StockGroupID = G.StockGroupID
+            JOIN stockitemholdings SH ON SH.StockItemID = S.StockItemID
             WHERE G.StockGroupID = " . $_GET['id']);
     } else {
         $sortValue = $_GET["sort"];
@@ -17,6 +18,7 @@
                 $stockItems = $pdo->query("SELECT * FROM StockItems S
                     JOIN stockitemstockgroups SG ON S.StockItemID = SG.StockItemID
                     JOIN stockgroups G ON SG.StockGroupID = G.StockGroupID
+                    JOIN stockitemholdings SH ON SH.StockItemID = S.StockItemID
                     WHERE G.StockGroupID = " . $_GET['id'] . "
                     ORDER BY S.StockItemName");
                 break;
@@ -24,6 +26,7 @@
                 $stockItems = $pdo->query("SELECT * FROM StockItems S
                     JOIN stockitemstockgroups SG ON S.StockItemID = SG.StockItemID
                     JOIN stockgroups G ON SG.StockGroupID = G.StockGroupID
+                    JOIN stockitemholdings SH ON SH.StockItemID = S.StockItemID
                     WHERE G.StockGroupID = " . $_GET['id'] . "
                     ORDER BY S.UnitPrice");
                 break;
@@ -31,6 +34,7 @@
                 $stockItems = $pdo->query("SELECT * FROM StockItems S
                     JOIN stockitemstockgroups SG ON S.StockItemID = SG.StockItemID
                     JOIN stockgroups G ON SG.StockGroupID = G.StockGroupID
+                    JOIN stockitemholdings SH ON SH.StockItemID = S.StockItemID
                     WHERE G.StockGroupID = " . $_GET['id'] . "
                     ORDER BY S.UnitPrice DESC");
                 break;
@@ -38,6 +42,7 @@
                 $stockItems = $pdo->query("SELECT * FROM StockItems S
                     JOIN stockitemstockgroups SG ON S.StockItemID = SG.StockItemID
                     JOIN stockgroups G ON SG.StockGroupID = G.StockGroupID
+                    JOIN stockitemholdings SH ON SH.StockItemID = S.StockItemID
                     WHERE G.StockGroupID = " . $_GET['id'] . "
                     ORDER BY S.StockItemID");
                 break;
@@ -45,11 +50,12 @@
                 $stockItems = $pdo->query("SELECT * FROM StockItems S
                     JOIN stockitemstockgroups SG ON S.StockItemID = SG.StockItemID
                     JOIN stockgroups G ON SG.StockGroupID = G.StockGroupID
+                    JOIN stockitemholdings SH ON SH.StockItemID = S.StockItemID
                     WHERE G.StockGroupID = " . $_GET['id'] . "
                     ORDER BY S.StockItemID DESC");
                 break;
             default:
-                $stockItems = $pdo->query("SELECT * FROM StockItems 
+                $stockItems = $pdo->query("SELECT * FROM StockItems JOIN stockitemholdings SH ON SH.StockItemID = S.StockItemID
                     WHERE G.StockGroupID = " . $_GET['id']);
         }
     }
