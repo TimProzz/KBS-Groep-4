@@ -49,9 +49,18 @@
                     <a class="nav-link singleLink" href="winkelmand.php">
                         <i class="fa fa-shopping-cart" aria-hidden="true"></i><span class="winkelmandCount winkelmandStyle"><?php echo countCartTotal(); ?></span>
                     </a>
-                    <a class="nav-link singleLink" href="<?php if(isset($_COOKIE["login"])) { echo 'account.php'; } else { echo 'login.php'; } ?>">
-                        <?php if(isset($_COOKIE["login"])) { echo "<span class='navUserName'>" . $_COOKIE["login"] . "</span>"; } ?><i class="fa fa-user" aria-hidden="true"></i>
+                    <a class="nav-link singleLink" href="<?php if(userLoggedIn()) { echo 'account.php'; } else { echo 'login.php'; } ?>">
+                        <?php if(userLoggedIn()) { echo "<span class='navUserName'>" . $_COOKIE["login"] . "</span>"; } ?><i class="fa fa-user" aria-hidden="true"></i>
                     </a>
+                    <?php
+                        if(getUserLevel($pdo) == "Admin") {
+                            ?>
+                                <a class="nav-link singleLink" href="adminPanel.php">
+                                    <span class='navUserName'>Admin panel</span><i class="fa fa-lock" aria-hidden="true"></i>
+                                </a>
+                            <?php
+                        }
+                    ?>
                 </div>
             </div>
         </nav>
