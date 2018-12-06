@@ -35,6 +35,18 @@
         return $usernameIsSet;
     }
 
+    function checkIfEmailExists($email, $pdo) { // Checks if the given email exists in the database table 'users'
+        $emailIsSet = 0;
+        $allEmails = $pdo->query("SELECT email FROM users");
+        $allEmails->execute();
+        while($singleEmail = $allEmails->fetch()) {
+            if($singleEmail["email"] == $email) {
+                $emailIsSet = 1;
+            }
+        }
+        return $emailIsSet;
+    }
+
     function loginUser($username) { // Logs the user in with given username
         setcookie("login", $username, time() + (86400 * 30), "/"); //Set username as login for 30 days
     }
@@ -47,6 +59,52 @@
 
     function hashedPassword512($username, $password) { // Hashes the password with username and password
         return hash("sha512", $username.$password);
+    }
+
+    function getUserLevelById($pdo, $userID) { //Gets the userlevel of given user ID
+        if(userLoggedIn()) {
+            $getUserLevel = $pdo->prepare("SELECT rechten FROM users WHERE id = '" . $userID . "'");
+            $getUserLevel->execute();
+            $row = $getUserLevel->fetch();
+            $userLevelInt = $row["rechten"];
+            switch($userLevelInt) {
+                case 1:
+                    return "Admin";
+                    break;
+                case 2:
+                    return "Medewerker";
+                    break;
+                case 3:
+                    return "Leverancier";
+                    break;
+                case 4:
+                    return "Gebruiker";
+                    break;
+            }
+        }
+    }
+
+    function getUserLevel($pdo) { //Gets the userlevel of logged in user
+        if(userLoggedIn()) {
+            $getUserLevel = $pdo->prepare("SELECT rechten FROM users WHERE username = '" . $_COOKIE["login"] . "'");
+            $getUserLevel->execute();
+            $row = $getUserLevel->fetch();
+            $userLevelInt = $row["rechten"];
+            switch($userLevelInt) {
+                case 1:
+                    return "Admin";
+                    break;
+                case 2:
+                    return "Medewerker";
+                    break;
+                case 3:
+                    return "Leverancier";
+                    break;
+                case 4:
+                    return "Gebruiker";
+                    break;
+            }
+        }
     }
 
     function sortProducts() {
@@ -76,6 +134,14 @@
             $youtube_id = $matches[count($matches) - 1];
         }
         return 'https://www.youtube.com/embed/' . $youtube_id ;
+    }
+
+    function getUserDetailsById($customerID, $guestID) {
+        if($customerID == 0) {
+            return array("Guest", $guestID);
+        } else {
+            return array("Customer", $customerID);
+        }
     }
 
     function getDutchDayFromDate($date) {

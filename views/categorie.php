@@ -30,6 +30,17 @@
                             <div class="card-body">
                                 <h5 class="card-title"><a href="product.php?id=<?php echo $row['StockItemID']; ?>"><?php echo $row["StockItemName"]?></a></h5>
                               <p class="card-text"><?php echo $row["MarketingComments"]?></p>
+                                <p class="card-supply"><?php 
+                                if(isset($row["QuantityOnHand"]) && $row["QuantityOnHand"] >= 10) { 
+                                    echo "Voorraad: <span class='SupplyHigh'>10+</span>"; 
+                                } elseif (isset($row["QuantityOnHand"]) && $row["QuantityOnHand"] < 10 && $row["QuantityOnHand"] > 0) {
+                                    echo "Voorraad: <span class= 'SupplyLow'>" . $row["QuantityOnHand"] . "</span>"; 
+
+                                } elseif(isset($row["QuantityOnHand"]) && $row["QuantityOnHand"] <= 0) { 
+                                    echo "<span class= 'SupplyLow'> Product uitverkocht! </span>"; 
+
+                                } ?>
+                               </p>
                               <h6 class="price">&euro;<?php echo $row["RecommendedRetailPrice"]?></h6>
                               <!--<a href="#" class="btn btn-primary wagen">In winkelwagen</a>-->
                             </div>

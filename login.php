@@ -6,7 +6,7 @@
 <?php
 
 if (userLoggedIn()) {
-    header("Location: index.php?error=You're already logged in!");
+    header("Location: index.php?error=Je bent al ingelogd!");
     exit;
 }
 
@@ -23,10 +23,10 @@ if (isset($_POST["login"])) {
     $count = $query->fetchColumn();
     if ($count > 0) {
         loginUser($username);
-        header("Location: index.php?success=You've successfully logged in!");
+        header("Location: index.php?success=Je hebt succesvol ingelogd!");
         exit;
     } else {
-        header("Location: login.php?error=Invalid login details. Please try again!");
+        header("Location: login.php?error=Ongeldige login gegevens. Probeer het opnieuw!");
         exit;
     }
 }

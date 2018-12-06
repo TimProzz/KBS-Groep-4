@@ -7,7 +7,7 @@ $views = "views/register.php";
 <?php
 
 if(userLoggedIn()) {
-    header("Location: index.php?error=You're already logged in!");
+    header("Location: index.php?error=Je bent al ingelogd!");
     exit;
 }
 
@@ -28,15 +28,15 @@ if (isset($_POST["register"])) {
     $phonenumber = $_POST["phonenumber"];
 
     if ($password != $passwordCheck) {
-        array_push($errorMessages, "Passwords are not the same!");
+        array_push($errorMessages, "Wachtwoorden zijn niet hetzelfde!");
     }
 
     if (strlen($password) < 6) {
-        array_push($errorMessages, "Password needs to be at least 6 characters!");
+        array_push($errorMessages, "Wachtwoord moet minimaal 6 tekens bevatten!");
     }
 
     if (strlen($username) < 6) {
-        array_push($errorMessages, "Username needs to be at least 6 characters!");
+        array_push($errorMessages, "Gebruikersnaam moet minimaal 6 tekens bevatten!");
     }
 
     if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
@@ -44,9 +44,14 @@ if (isset($_POST["register"])) {
     }
 
     $usernameIsSet = checkIfUsernameExists($username, $pdo);
+    $emailIsSet = checkIfUsernameExists($email, $pdo);
 
-    if ($usernameIsSet == 1) {
-        array_push($errorMessages, "The username is already existing!");
+    if($usernameIsSet == 1) {
+        array_push($errorMessages, "De gebruikersnaam bestaat al!");
+    }
+    
+    if($emailIsSet == 1) {
+        array_push($errorMessages, "De email bestaat al!");
     }
 
     if (count($errorMessages) == 0) {
@@ -69,7 +74,7 @@ if (isset($_POST["register"])) {
             $query->bindValue(':rechten', $rechten);
             $query->execute();
 
-            header("Location: register.php?success=You've successfully registered yourself. You can now <a href='login.php'>login</a> using your details!");
+            header("Location: register.php?success=Je hebt jezelf succesvol geregistreerd! Je kunt nu <a href='login.php'>inloggen</a> met je gegevens!");
             exit;
         } catch (Exception $e) {
             echo "Failed to register new user: " . $e->getMessage();
