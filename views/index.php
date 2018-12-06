@@ -15,7 +15,8 @@
             ?>
                 <div class="mySlides">
                     <div class="numbertext"><?php echo $sliderImagesCount . " / " . count($sliderImages); ?></div>
-                    <img src="<?php echo $singleSlide; ?>" class="img">
+                    <?php /*<img src="<?php echo $singleSlide; ?>" class="img"> */?>
+                    <div class="thesliderImage" style="background: url(<?php echo $singleSlide; ?>) 50% 50% no-repeat; background-size: cover; height: 300px;"></div>
                     <div class="text">Aanbieding <?php echo $sliderImagesCount; ?></div>
                 </div>
             <?php
