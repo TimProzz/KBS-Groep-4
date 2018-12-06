@@ -1,12 +1,13 @@
 <div class="container product push-padding">
     <h2>Admin panel</h2>
     <?php
-        $amountControls = 2;
+        $amountControls = 3;
         $amountControlsWidth = (100 / $amountControls) . "%";
     ?>
     <div class="accountControls">
         <div class="singleAccountControl alleBestellingen singleAccountControlActive" style="width: <?php echo $amountControlsWidth; ?>;" data-change="alleBestellingen">Alle bestellingen</div>
         <div class="singleAccountControl accountRechten" style="width: <?php echo $amountControlsWidth; ?>;" data-change="accountRechten">Account rechten</div>
+        <div class="singleAccountControl sliderAfbeeldingen" style="width: <?php echo $amountControlsWidth; ?>;" data-change="sliderAfbeeldingen">Home slider afbeeldingen</div>
     </div>
     <hr>
     <div class="singleAccountTab alleBestellingen">
@@ -87,7 +88,17 @@
                                 </div>
                             </div>
                             <div class="orderBottom">
-                                <strong>Totaal: </strong><?php echo "&euro;" . number_format($priceTotalOfOrder, 2); ?>
+                                <strong>Totaal: </strong><?php echo "&euro;" . number_format($priceTotalOfOrder, 2); ?><br>
+                                <strong>Status: </strong><?php echo $orderResult["status"]; ?>
+                                <div class="overflowhidden">
+                                    <form method="post" action="adminPanel.php?id=<?php echo $orderResult["id"]; ?>">
+                                        <select name="valueOptionStatus">
+                                            <option value="In behandeling">In behandeling</option>
+                                            <option value="Bezorgd">Bezorgd</option>
+                                        </select><br>
+                                        <input type="submit" name="submitChangeStatus" value="Veranderen" style="float: left;" class="btn btn-outline-success full-button" />
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div><br>
@@ -96,8 +107,8 @@
             ?>
         </div>
     </div>
-    <div class="singleAccountTab accountRechten">
-        <h2>Account rechten</h2>
+    <div class="singleAccountTab accountContainerHidden accountRechten">
+        <h3>Account rechten</h3>
         <?php
             while($row = $allUsers->fetch()) {
                 ?>
@@ -117,5 +128,8 @@
                 <?php
             }
         ?>
+    </div>
+    <div class="singleAccountTab accountContainerHidden sliderAfbeeldingen">
+        <h3>Slider afbeeldingen</h3>
     </div>
 </div>

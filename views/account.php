@@ -127,7 +127,8 @@
                                 </div>
                             </div>
                             <div class="orderBottom">
-                                <strong>Totaal: </strong><?php echo "&euro;" . number_format($priceTotalOfOrder, 2); ?>
+                                <strong>Totaal: </strong><?php echo "&euro;" . number_format($priceTotalOfOrder, 2); ?><br>
+                                <strong>Status: </strong><?php echo $orderResult["status"]; ?>
                             </div>
                         </div>
                     </div><br>

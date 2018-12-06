@@ -53,7 +53,7 @@
                         <?php if(userLoggedIn()) { echo "<span class='navUserName'>" . $_COOKIE["login"] . "</span>"; } ?><i class="fa fa-user" aria-hidden="true"></i>
                     </a>
                     <?php
-                        if(getUserLevel($pdo) == "Admin") {
+                        if(getUserLevel($pdo) == "Admin" || getuserLevel($pdo) == "Medewerker") {
                             ?>
                                 <a class="nav-link singleLink" href="adminPanel.php">
                                     <span class='navUserName'>Admin panel</span><i class="fa fa-lock" aria-hidden="true"></i>
