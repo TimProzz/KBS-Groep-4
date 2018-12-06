@@ -33,6 +33,30 @@
         exit;
     }
 
+    if(isset($_POST["changeImagesSlider"])) {
+        $id = $_GET["id"];
+        $stringImages = $_POST["textAreaSlider"];
+        $countIfResult = 0;
+        
+        $stmt = $pdo->query("SELECT * FROM homeSlider");
+        while($row = $stmt->fetch()) {
+            $countIfResult++;
+        }
+        if($countIfResult > 0) {
+            $queryInsertPhoto = ("UPDATE homeSlider SET stringImages='" . $stringImages . "' WHERE id = '" . $id . "'");
+        } else {
+            $queryInsertPhoto = ("INSERT INTO homeSlider (id, stringImages) VALUES ('" . $id . "', '" . $stringImages . "')");
+        }
+        $queryInsertPhotoChange = $pdo->prepare( $queryInsertPhoto );
+        $queryInsertPhotoChange->execute();
+        header("Location: adminPanel.php?success=Succesvol de slider veranderd!");
+        exit;
+    }
+
+    $sliderImages = $pdo->prepare("SELECT * FROM homeSlider");
+    $sliderImages->execute();
+    $rowSliderImages = $sliderImages->fetch();
+
 ?>
 
 <?php

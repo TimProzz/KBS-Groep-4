@@ -36,6 +36,8 @@
                 $stockItems = $pdo->query("SELECT * FROM StockItems");
         }
     }
+
+    $sliderImagesDB = $pdo->query("SELECT * FROM homeSlider");
 ?>
 
 

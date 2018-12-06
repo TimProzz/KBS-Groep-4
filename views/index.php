@@ -1,7 +1,12 @@
 <!-- Slideshow container -->
 <div class="slideshow-container">
     <?php
-        $sliderImages = array("https://via.placeholder.com/250", "https://via.placeholder.com/1250", "https://s.s-bol.com/imgbase0/imagebase3/large/FC/2/4/4/4/9200000085994442.jpg");
+        $sliderImages = array();
+        while($rowSliderImagesDB = $sliderImagesDB->fetch()) {
+            $sliderImages = explode(",", $rowSliderImagesDB["stringImages"]);
+        }
+        
+        //$sliderImages = array("https://via.placeholder.com/250", "https://via.placeholder.com/1250", "https://s.s-bol.com/imgbase0/imagebase3/large/FC/2/4/4/4/9200000085994442.jpg");
         $countSliders = count($sliderImages);
         $widthButtons = 100 / $countSliders;
         $sliderImagesCount = 0;

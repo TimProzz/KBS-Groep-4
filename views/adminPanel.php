@@ -131,5 +131,10 @@
     </div>
     <div class="singleAccountTab accountContainerHidden sliderAfbeeldingen">
         <h3>Slider afbeeldingen</h3>
+        <span>Plak hier de linkjes naar de foto's, </span><strong>gescheiden door een komma!</strong>
+        <form method="post" action="adminPanel.php?id=<?php echo $rowSliderImages["id"]; ?>">
+            <textarea style="width: 100%; height: 300px;" name="textAreaSlider"><?php echo $rowSliderImages["stringImages"]; ?></textarea>
+            <input type="submit" name="changeImagesSlider" value="Veranderen" class="btn btn-outline-success full-button" />
+        </form>
     </div>
 </div>
