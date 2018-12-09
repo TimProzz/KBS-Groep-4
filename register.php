@@ -44,12 +44,12 @@ if (isset($_POST["register"])) {
     }
 
     $usernameIsSet = checkIfUsernameExists($username, $pdo);
-    $emailIsSet = checkIfUsernameExists($email, $pdo);
+    $emailIsSet = checkIfEmailExists($email, $pdo);
 
     if($usernameIsSet == 1) {
         array_push($errorMessages, "De gebruikersnaam bestaat al!");
     }
-    
+
     if($emailIsSet == 1) {
         array_push($errorMessages, "De email bestaat al!");
     }
