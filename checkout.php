@@ -53,19 +53,21 @@
             $price = $_POST["price"];
             $paymentMethod = $_POST["paymentmethod"];
             $delivery_date = $_POST["fullDate"];
+            $status = "In behandeling";
             if(userLoggedIn()) {
                 $accountDetails = $pdo->query("SELECT id FROM users WHERE username ='" . $_COOKIE['login'] . "'");
                 $accountDetails->execute();
                 $row = $accountDetails->fetch();
                 $userID = $row["id"];
 
-                $query = $pdo->prepare("INSERT INTO get_order (customerID, products, date, price, paymentmethod, delivery_date) VALUES (:customerID, :products, :date, :price, :paymentmethod, :delivery_date)");
+                $query = $pdo->prepare("INSERT INTO get_order (customerID, products, date, price, paymentmethod, delivery_date, status) VALUES (:customerID, :products, :date, :price, :paymentmethod, :delivery_date, :status)");
                 $query->bindValue(':customerID', $userID);
                 $query->bindValue(':products', $products);
                 $query->bindValue(':date', $date);
                 $query->bindValue(':price', $price);
                 $query->bindValue(':paymentmethod', $paymentMethod);
                 $query->bindValue(':delivery_date', $delivery_date);
+                $query->bindValue(':status', $status);
                 $query->execute();
             } else {
                 $email = $_POST["email"];
@@ -91,13 +93,14 @@
                 $query->execute();
                 $guestID = $pdo->lastInsertId();
 
-                $query = $pdo->prepare("INSERT INTO get_order (guestID, products, date, price, paymentmethod, delivery_date) VALUES (:guestID, :products, :date, :price, :paymentmethod, :delivery_date)");
+                $query = $pdo->prepare("INSERT INTO get_order (guestID, products, date, price, paymentmethod, delivery_date, status) VALUES (:guestID, :products, :date, :price, :paymentmethod, :delivery_date, :status)");
                 $query->bindValue(':guestID', $guestID);
                 $query->bindValue(':products', $products);
                 $query->bindValue(':date', $date);
                 $query->bindValue(':price', $price);
                 $query->bindValue(':paymentmethod', $paymentMethod);
                 $query->bindValue(':delivery_date', $delivery_date);
+                $query->bindValue(':status', $status);
                 $query->execute();
             }
             unset($_COOKIE['winkelmand']);

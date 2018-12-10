@@ -1,8 +1,16 @@
 <!-- Slideshow container -->
 <div class="slideshow-container">
     <?php
-        $sliderImages = array("https://via.placeholder.com/250", "https://via.placeholder.com/1250", "https://s.s-bol.com/imgbase0/imagebase3/large/FC/2/4/4/4/9200000085994442.jpg");
+        $sliderImages = array();
+        while($rowSliderImagesDB = $sliderImagesDB->fetch()) {
+            $sliderImages = explode(",", $rowSliderImagesDB["stringImages"]);
+        }
+        
+        //$sliderImages = array("https://via.placeholder.com/250", "https://via.placeholder.com/1250", "https://s.s-bol.com/imgbase0/imagebase3/large/FC/2/4/4/4/9200000085994442.jpg");
         $countSliders = count($sliderImages);
+        if($countSliders == 0) {
+            $countSliders = 1;
+        }
         $widthButtons = 100 / $countSliders;
         $sliderImagesCount = 0;
         foreach($sliderImages as $singleSlide) {
@@ -10,7 +18,8 @@
             ?>
                 <div class="mySlides">
                     <div class="numbertext"><?php echo $sliderImagesCount . " / " . count($sliderImages); ?></div>
-                    <img src="<?php echo $singleSlide; ?>" class="img">
+                    <?php /*<img src="<?php echo $singleSlide; ?>" class="img"> */?>
+                    <div class="thesliderImage" style="background: url(<?php echo $singleSlide; ?>) 50% 50% no-repeat; background-size: cover; height: 300px;"></div>
                     <div class="text">Aanbieding <?php echo $sliderImagesCount; ?></div>
                 </div>
             <?php

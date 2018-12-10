@@ -13,29 +13,41 @@
         
         switch($sortValue) {
             case "Naam":
-                $stockItems = $pdo->query("SELECT * FROM StockItems 
+                $stockItems = $pdo->query("SELECT * FROM StockItems S
+        LEFT JOIN productimages P ON S.StockItemID = P.productid
+        JOIN stockitemholdings SH ON SH.StockItemID = S.StockItemID
                     ORDER BY StockItemName");
                 break;
             case "Prijs1":
-                $stockItems = $pdo->query("SELECT * FROM StockItems 
+                $stockItems = $pdo->query("SELECT * FROM StockItems S
+        LEFT JOIN productimages P ON S.StockItemID = P.productid
+        JOIN stockitemholdings SH ON SH.StockItemID = S.StockItemID
                     ORDER BY UnitPrice");
                 break;
             case "Prijs2":
-                $stockItems = $pdo->query("SELECT * FROM StockItems 
+                $stockItems = $pdo->query("SELECT * FROM StockItems S
+        LEFT JOIN productimages P ON S.StockItemID = P.productid
+        JOIN stockitemholdings SH ON SH.StockItemID = S.StockItemID
                     ORDER BY UnitPrice DESC");
                 break;
             case "Nieuwste":
-                $stockItems = $pdo->query("SELECT * FROM StockItems 
+                $stockItems = $pdo->query("SELECT * FROM StockItems S
+        LEFT JOIN productimages P ON S.StockItemID = P.productid
+        JOIN stockitemholdings SH ON SH.StockItemID = S.StockItemID
                     ORDER BY StockItemID");
                 break;
             case "Oudste":
-                $stockItems = $pdo->query("SELECT * FROM StockItems 
+                $stockItems = $pdo->query("SELECT * FROM StockItems S
+        LEFT JOIN productimages P ON S.StockItemID = P.productid
+        JOIN stockitemholdings SH ON SH.StockItemID = S.StockItemID
                     ORDER BY StockItemID DESC");
                 break;
             default:
                 $stockItems = $pdo->query("SELECT * FROM StockItems");
         }
     }
+
+    $sliderImagesDB = $pdo->query("SELECT * FROM homeSlider");
 ?>
 
 

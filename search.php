@@ -42,7 +42,7 @@ if(isset($_GET["search"])) {
                     $stockItems = $pdo->query("SELECT * FROM StockItems S JOIN stockitemholdings SH ON SH.StockItemID = S.StockItemID WHERE StockItemName LIKE '%" . $search . "%'");
             }
         }
-
+    $sliderImagesDB = $pdo->query("SELECT * FROM homeSlider");
 ?>
 
 
